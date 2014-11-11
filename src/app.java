@@ -13,7 +13,7 @@ public class app {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //This is the code
+        GameFrame gf = new GameFrame();
     }
     
 }
