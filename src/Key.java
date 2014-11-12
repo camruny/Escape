@@ -1,5 +1,5 @@
 
-import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /*
@@ -11,11 +11,10 @@ import javax.swing.JButton;
  *
  * @author Cameron
  */
-public class Character {
-    JButton character;
+public class Key {
+    JButton key;
     
-    public Character() {
-        character = new JButton();
-        
+    public Key()    {
+        key = new JButton();
     }
 }
