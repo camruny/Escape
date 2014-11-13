@@ -14,16 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Cameron
- */
-public class GamePanel extends JPanel implements ActionListener, KeyListener {
+public class GamePanel extends JPanel{
     Player player;  
     Level currentLevel;
     ArrayList allChars;
@@ -142,70 +133,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         key.key.setBorderPainted(false);
         key.key.setLocation(keyx, keyy);
         add(key.key);
-    }
-   
-    //Needs to be in StartPanel
-    public void actionPerformed(ActionEvent e) {
-        Object obj = e.getSource();
-        
-        if(obj== characterLoop) {
-            changeCharacter();
-        }
-        if(obj == characterLoopLeft)    {
-            changeCharacterLeft();
-        }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-         if(e.getKeyCode() == KeyEvent.VK_UP)    {
-            gameTimer.start();
-            characterLoop.start();
-            charactery = charactery - 2;
-            player.character.setLocation(characterx, charactery);
-         }
-         if(e.getKeyCode() == KeyEvent.VK_DOWN)    {
-            gameTimer.start();
-            characterLoop.start();
-            charactery = charactery + 2;
-            player.character.setLocation(characterx, charactery);
-         }
-         if(e.getKeyCode() == KeyEvent.VK_LEFT)    {
-             gameTimer.start();
-            characterLoopLeft.start();
-            characterx = characterx - 2;
-            player.character.setLocation(characterx, charactery);
-         }
-         if(e.getKeyCode() == KeyEvent.VK_RIGHT)    {
-            gameTimer.start();
-            characterLoop.start();
-            characterx = characterx + 2;
-            player.character.setLocation(characterx, charactery);
-         }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_UP)    {
-            characterLoop.stop();
-            gameTimer.stop();
-         }
-        if(e.getKeyCode() == KeyEvent.VK_DOWN)    {
-            characterLoop.stop();
-            gameTimer.stop();
-         }
-        if(e.getKeyCode() == KeyEvent.VK_LEFT)    {
-            characterLoopLeft.stop();
-            gameTimer.stop();
-         }
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT)    {
-            characterLoop.stop();
-            gameTimer.stop();
-         }
     }
     
     public void levelCompleted(){
