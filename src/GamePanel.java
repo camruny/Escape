@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -23,7 +24,9 @@ import javax.swing.Timer;
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
     Character character;   
     Key key;
+    //used by the characterChange loop to move through the 3 character pictures
     int characterNum = 1;
+    //adds the character pictures to the JButton
     ImageIcon mario1 = new ImageIcon("images/mario/mario1.png");
     ImageIcon mario2 = new ImageIcon("images/mario/mario2.png");
     ImageIcon mario3 = new ImageIcon("images/mario/mario3.png");
@@ -31,25 +34,33 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     ImageIcon mario2left = new ImageIcon("images/mario/mario2left.png");
     ImageIcon mario3left = new ImageIcon("images/mario/mario3left.png");
     
+    //adds the key image to the JButton
     ImageIcon keyPic = new ImageIcon("images/key.png");
     
+    //default starting position of the character
     int characterx = 100;
     int charactery = 100;
     
-    int keyx = 100;
-    int keyy = 100;
+    //initializes the key position
+    int keyx = 0;
+    int keyy = 0;
     
+    //counts the keys the user has collected
+    int keysCollected = 0;
     
+    //timers that loop through 3 character pictures to make them appear they are moving
     Timer characterLoop, characterLoopLeft;
-    Timer moveCharacter;
+    Timer gameTimer;
         
     public GamePanel()  {
         
         setLayout(null);
         
+        character = new Character();
+        
         characterLoop = new Timer(100, this);
         characterLoopLeft = new Timer(100,this);
-        moveCharacter = new Timer(100, this);
+        gameTimer = new Timer(100, this);
         
         character = new Character();
         character.character.setIcon(mario1);
@@ -61,14 +72,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         character.character.addKeyListener(this);
         character.character.setFocusable(true);
         
-        key = new Key();
-        key.key.setIcon(keyPic);
-        key.key.setSize(20, 42);
-        key.key.setBorderPainted(false);
-        key.key.setLocation(keyx, keyy);
-        add(key.key);
+        //adds the first key
+        addKey();
         
-         
     }
     
     public void changeCharacter()    {
@@ -106,6 +112,22 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 break;
         }
     }
+    
+    public void addKey() {
+        //puts the key in a random position on the screen 
+        Random rand = new Random();
+        int randomNum1 = rand.nextInt((600-10)+ 1) + 10;   
+        keyx = randomNum1; 
+        
+        int randomNum2 = rand.nextInt((400-10)+ 1) + 10;   
+        keyy = randomNum2; 
+        key = new Key();
+        key.key.setIcon(keyPic);
+        key.key.setSize(20, 42);
+        key.key.setBorderPainted(false);
+        key.key.setLocation(keyx, keyy);
+        add(key.key);
+    }
 
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
@@ -116,33 +138,42 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         if(obj == characterLoopLeft)    {
             changeCharacterLeft();
         }
+        if(obj == gameTimer)    {
+            if((characterx==keyx)&&(charactery==keyy))   {
+                key.key.setVisible(false);
+                addKey();
+            }
+        }
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
          if(e.getKeyCode() == KeyEvent.VK_UP)    {
+            gameTimer.start();
             characterLoop.start();
-            charactery = charactery - 5;
+            charactery = charactery - 2;
             character.character.setLocation(characterx, charactery);
          }
          if(e.getKeyCode() == KeyEvent.VK_DOWN)    {
+            gameTimer.start();
             characterLoop.start();
-            charactery = charactery + 5;
+            charactery = charactery + 2;
             character.character.setLocation(characterx, charactery);
          }
          if(e.getKeyCode() == KeyEvent.VK_LEFT)    {
+             gameTimer.start();
             characterLoopLeft.start();
-            characterx = characterx - 5;
+            characterx = characterx - 2;
             character.character.setLocation(characterx, charactery);
          }
          if(e.getKeyCode() == KeyEvent.VK_RIGHT)    {
+            gameTimer.start();
             characterLoop.start();
-            characterx = characterx + 5;
+            characterx = characterx + 2;
             character.character.setLocation(characterx, charactery);
          }
     }
@@ -151,15 +182,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_UP)    {
             characterLoop.stop();
+            gameTimer.stop();
          }
         if(e.getKeyCode() == KeyEvent.VK_DOWN)    {
             characterLoop.stop();
+            gameTimer.stop();
          }
         if(e.getKeyCode() == KeyEvent.VK_LEFT)    {
             characterLoopLeft.stop();
+            gameTimer.stop();
          }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT)    {
             characterLoop.stop();
+            gameTimer.stop();
          }
     }
     

@@ -18,4 +18,6 @@ public class Character {
         character = new JButton();
         
     }
+  
 }
+
