@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class StartPanel extends JPanel implements ActionListener, KeyListener{
-    GamePanel gp;
     JButton start, theme1, theme2, theme3;
     GamePanel gameBoard;
     Theme chosenTheme;
@@ -21,10 +20,10 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         Object obj = e.getSource();
         
         if(obj== gameBoard.characterLoop) {
-            changeCharacter();
+            gameBoard.changeCharacter();
         }
-        if(obj == characterLoopLeft)    {
-            changeCharacterLeft();
+        if(obj == gameBoard.characterLoopLeft)    {
+            gameBoard.changeCharacterLeft();
         }
     }
 
