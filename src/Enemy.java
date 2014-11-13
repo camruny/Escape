@@ -5,7 +5,7 @@ public class Enemy extends Character{
     int speed;
     
     public Enemy(int s, ImageIcon g, Point i){
-        
+        super(g, i);
     }
     
     public void move(){

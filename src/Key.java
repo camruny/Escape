@@ -1,4 +1,5 @@
 
+import java.awt.Point;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -13,8 +14,10 @@ import javax.swing.JButton;
  */
 public class Key extends Character{
     JButton key;
-    
-    public Key(){
+
+    public Key(ImageIcon g, Point i) {
+        super(g, i);
         key = new JButton();
     }
+    
 }

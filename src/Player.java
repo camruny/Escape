@@ -1,10 +1,12 @@
 
+import java.awt.Point;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 public class Player extends Character{
-    
-    public Player(){
-        
+
+    public Player(ImageIcon g, Point i) {
+        super(g, i);
     }
     
     public void move(KeyEvent e){
