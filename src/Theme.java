@@ -7,7 +7,7 @@ public class Theme {
     
     public Theme(ImageIcon p, ImageIcon e, ImageIcon bg){
         playerPic = new ImageIcon("images/mario/mario1.png");
-        enemyPic = new ImageIcon();
-        backgroundPic = new ImageIcon();
+        enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
+        backgroundPic = new ImageIcon("images/backgrounds/");
     }
 }
