@@ -143,16 +143,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         key.key.setLocation(keyx, keyy);
         add(key.key);
     }
-    
-    public void collision() {
-        if((charactery>=keyy)&&(characterx>=keyx))
-        {   
-        key.key.setVisible(false);
-        addKey();
-        }
-    }
-    
-
+   
     //Needs to be in StartPanel
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
@@ -163,10 +154,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         if(obj == characterLoopLeft)    {
             changeCharacterLeft();
         }
-        if(obj == gameTimer)    {
-            collision();
-        }
-        
     }
 
     @Override
