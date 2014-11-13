@@ -7,7 +7,7 @@
  *
  * @author Cameron
  */
-public class app {
+public class Main {
 
     /**
      * @param args the command line arguments
