@@ -68,6 +68,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         
         player = new Player();
         player.character.setIcon(mario1);
+        //Windows transparency here
+        player.character.setOpaque(false);
+        player.character.setContentAreaFilled(false);
+        //end Windows transparency
         player.character.setBorderPainted(false);
         add(player.character);
         player.character.setSize(40, 75);
@@ -130,6 +134,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         key = new Key();
         key.key.setIcon(keyPic);
         key.key.setSize(20, 42);
+        //Windows transparency
+        key.key.setOpaque(false);
+        key.key.setContentAreaFilled(false);
+        //end Windows transparency
         key.key.setBorderPainted(false);
         key.key.setLocation(keyx, keyy);
         add(key.key);
