@@ -11,10 +11,10 @@ import javax.swing.JButton;
  *
  * @author Cameron
  */
-public class Key {
+public class Key extends Character{
     JButton key;
     
-    public Key()    {
+    public Key(){
         key = new JButton();
     }
 }

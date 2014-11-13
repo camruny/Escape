@@ -13,6 +13,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  * @author Cameron
  */
 public class GameFrame extends JFrame {
+    //Needs to be in StartPanel
     GamePanel gp;
     
     public GameFrame()   {
