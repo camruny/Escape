@@ -1,8 +1,10 @@
 
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
-public class StartPanel {
+public class StartPanel extends JPanel{
+    GamePanel gp;
     JButton start, theme1, theme2, theme3;
     GamePanel gameBoard;
     Theme chosenTheme;

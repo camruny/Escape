@@ -13,15 +13,14 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  * @author Cameron
  */
 public class GameFrame extends JFrame {
-    //Needs to be in StartPanel
-    GamePanel gp;
+    StartPanel sp;
     
     public GameFrame()   {
         super("Escape");
         
-        gp = new GamePanel();
+        sp = new StartPanel();
         getContentPane().setLayout(new BorderLayout());
-	getContentPane().add(gp,"Center");
+	getContentPane().add(sp,"Center");
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setSize (640, 480);
         setVisible(true);
