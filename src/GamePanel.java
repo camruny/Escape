@@ -1,5 +1,6 @@
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -142,6 +143,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         key.key.setLocation(keyx, keyy);
         add(key.key);
     }
+    
+    public void collision() {
+        if((charactery>=keyy)&&(characterx>=keyx))
+        {   
+        key.key.setVisible(false);
+        addKey();
+        }
+    }
+    
 
     //Needs to be in StartPanel
     public void actionPerformed(ActionEvent e) {
@@ -154,11 +164,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             changeCharacterLeft();
         }
         if(obj == gameTimer)    {
-            if((characterx==keyx)&&(charactery==keyy))   {
-                key.key.setVisible(false);
-                addKey();
-            }
+            collision();
         }
+        
     }
 
     @Override
