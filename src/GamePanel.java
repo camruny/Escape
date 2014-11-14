@@ -47,18 +47,18 @@ public class GamePanel extends JPanel{
     int keysCollected = 0;
     
     //timers that loop through 3 player pictures to make them appear they are moving
-    Timer characterLoop, characterLoopLeft;
-    Timer gameTimer;
+    //Timer characterLoop, characterLoopLeft;
+    //Timer gameTimer;
         
     public GamePanel(Theme t)  {
         
         setLayout(null);
         
-        characterLoop = new Timer(100, this);
-        characterLoopLeft = new Timer(100,this);
-        gameTimer = new Timer(100, this);
+        //characterLoop = new Timer(100, this);
+        //characterLoopLeft = new Timer(100,this);
+        //gameTimer = new Timer(100, this);
         
-        player = new Player();
+        player = new Player(mario1, player.location);
         player.character.setIcon(mario1);
         //Windows transparency here
         player.character.setOpaque(false);
@@ -68,9 +68,6 @@ public class GamePanel extends JPanel{
         add(player.character);
         player.character.setSize(40, 75);
         player.character.setLocation(characterx, charactery);
-        
-        player.character.addKeyListener(this);
-        player.character.setFocusable(true);
         
         //adds the first key
         addKey();
@@ -123,7 +120,7 @@ public class GamePanel extends JPanel{
         
         int randomNum2 = rand.nextInt((400-10)+ 1) + 10;   
         keyy = randomNum2; 
-        key = new Key();
+        //key = new Key();
         key.key.setIcon(keyPic);
         key.key.setSize(20, 42);
         //Windows transparency
@@ -151,7 +148,6 @@ public class GamePanel extends JPanel{
         
     }
     
-    @Override
     public void keyPressed(KeyEvent e){
         
     }

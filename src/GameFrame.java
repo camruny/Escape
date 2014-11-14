@@ -11,7 +11,8 @@ public class GameFrame extends JFrame {
         
         sp = new StartPanel();
         getContentPane().setLayout(new BorderLayout());
-	getContentPane().add(sp,"Center");
+	getContentPane().add(sp,"South");
+        getContentPane().add(sp.gameBoard, "Center");
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setSize (640, 480);
         setVisible(true);
