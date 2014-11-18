@@ -19,6 +19,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         theme1 = new JButton("Halloween Theme");
         theme2 = new JButton("Thanksgiving Theme");
         theme3 = new JButton("Christmas Theme");
+        chosenTheme = new Theme(new ImageIcon("images/mario/mario1.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/halloween.png"));
         gameBoard = new GamePanel(chosenTheme);
 
         characterLoop = new Timer(100, this);
@@ -27,6 +28,11 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         
         gameBoard.player.character.addKeyListener(this);
         gameBoard.player.character.setFocusable(true);
+        
+        add(start);
+        add(theme1);
+        add(theme2);
+        add(theme3);
     }
     
     public void actionPerformed(ActionEvent e) {
@@ -37,10 +43,10 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             add(gameBoard.key.key);
         }
         if(obj== characterLoop) {
-            gameBoard.changeCharacter();
+            chosenTheme.changeCharacter();
         }
         if(obj == characterLoopLeft)    {
-            gameBoard.changeCharacterLeft();
+            chosenTheme.changeCharacterLeft();
         }
         if(obj == theme1){
             chosenTheme.playerPic = new ImageIcon("images/mario/mario2.png");
@@ -102,7 +108,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameTimer.stop();
          }
         if(e.getKeyCode() == KeyEvent.VK_LEFT)    {
-            characterLoopLeft.stop();
+            characterLoop.stop();
             gameTimer.stop();
          }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT)    {

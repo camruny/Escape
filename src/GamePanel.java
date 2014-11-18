@@ -17,22 +17,13 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel{
     Player player;
+    StartPanel sp;
     Level currentLevel;
     ArrayList allChars;
     ImageIcon keyPic = new ImageIcon("images/key.png");
     
     //Not in GamePanel
     Key key;
-    
-    //used by the characterChange loop to move through the 3 player pictures
-    int characterNum = 1;
-    //adds the player pictures to the JButton
-    ImageIcon mario1 = new ImageIcon("images/mario/mario1.png");
-    ImageIcon mario2 = new ImageIcon("images/mario/mario2.png");
-    ImageIcon mario3 = new ImageIcon("images/mario/mario3.png");
-    ImageIcon mario1left = new ImageIcon("images/mario/mario1left.png");
-    ImageIcon mario2left = new ImageIcon("images/mario/mario2left.png");
-    ImageIcon mario3left = new ImageIcon("images/mario/mario3left.png");
     
     //adds the key image to the JButton
     //ImageIcon keyPic = new ImageIcon("images/key.png");
@@ -47,21 +38,16 @@ public class GamePanel extends JPanel{
     
     //counts the keys the user has collected
     int keysCollected = 0;
-    
-    //timers that loop through 3 player pictures to make them appear they are moving
-    //Timer characterLoop, characterLoopLeft;
-    //Timer gameTimer;
         
     public GamePanel(Theme t)  {
         
         setLayout(null);
-        
         //characterLoop = new Timer(100, this);
         //characterLoopLeft = new Timer(100,this);
         //gameTimer = new Timer(100, this);
         
-        player = new Player(mario1, new Point(50,50));
-        player.character.setIcon(mario1);
+        player = new Player(new ImageIcon("images/mario/mario1.png"), new Point(50,50));
+        player.character.setIcon(new ImageIcon("images/mario/mario1.png"));
         //Windows transparency here
         player.character.setOpaque(false);
         player.character.setContentAreaFilled(false);
@@ -77,41 +63,6 @@ public class GamePanel extends JPanel{
     }
     
     //Does Not Exist In Diagram
-    public void changeCharacter()    {
-        //changes the image icon of the player to make it appear as if it is walking
-        switch(characterNum)    {
-            case 1:
-                player.character.setIcon(mario1);
-                characterNum = 2;
-                break;
-            case 2:
-                player.character.setIcon(mario2);
-                characterNum = 3;
-                break;
-            case 3:
-                player.character.setIcon(mario3);
-                characterNum = 1;
-                break;
-        }
-    }
-    
-    public void changeCharacterLeft()    {
-        //changes the image icon of the player to make it appear as if it is walking
-        switch(characterNum)    {
-            case 1:
-                player.character.setIcon(mario1left);
-                characterNum = 2;
-                break;
-            case 2:
-                player.character.setIcon(mario2left);
-                characterNum = 3;
-                break;
-            case 3:
-                player.character.setIcon(mario3left);
-                characterNum = 1;
-                break;
-        }
-    }
     
     //Does Not Exist In Diagram
     public void addKey() {
