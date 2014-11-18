@@ -19,7 +19,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         theme1 = new JButton("Halloween Theme");
         theme2 = new JButton("Thanksgiving Theme");
         theme3 = new JButton("Christmas Theme");
-        
+        gameBoard = new GamePanel(chosenTheme);
         characterLoop = new Timer(100, this);
         characterLoopLeft = new Timer(100,this);
         gameTimer = new Timer(100, this);

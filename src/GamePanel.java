@@ -2,6 +2,7 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -15,9 +16,10 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class GamePanel extends JPanel{
-    Player player;  
+    Player player;
     Level currentLevel;
     ArrayList allChars;
+    ImageIcon keyPic = new ImageIcon("images/key.png");
     
     //Not in GamePanel
     Key key;
@@ -33,7 +35,7 @@ public class GamePanel extends JPanel{
     ImageIcon mario3left = new ImageIcon("images/mario/mario3left.png");
     
     //adds the key image to the JButton
-    ImageIcon keyPic = new ImageIcon("images/key.png");
+    //ImageIcon keyPic = new ImageIcon("images/key.png");
     
     //default starting position of the player
     int characterx = 100;
@@ -58,7 +60,7 @@ public class GamePanel extends JPanel{
         //characterLoopLeft = new Timer(100,this);
         //gameTimer = new Timer(100, this);
         
-        player = new Player(mario1, player.location);
+        player = new Player(mario1, new Point(50,50));
         player.character.setIcon(mario1);
         //Windows transparency here
         player.character.setOpaque(false);
@@ -120,7 +122,7 @@ public class GamePanel extends JPanel{
         
         int randomNum2 = rand.nextInt((400-10)+ 1) + 10;   
         keyy = randomNum2; 
-        //key = new Key();
+        key = new Key(keyPic, new Point(50,50));
         key.key.setIcon(keyPic);
         key.key.setSize(20, 42);
         //Windows transparency
