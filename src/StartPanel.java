@@ -25,8 +25,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         characterLoopLeft = new Timer(100,this);
         gameTimer = new Timer(100, this);
         
-        //gameBoard.player.character.addKeyListener(this);
-        //gameBoard.player.character.setFocusable(true);
+        gameBoard.player.character.addKeyListener(this);
+        gameBoard.player.character.setFocusable(true);
     }
     
     public void actionPerformed(ActionEvent e) {
