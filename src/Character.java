@@ -12,7 +12,7 @@ public class Character extends JLabel{
     
     public Character(ImageIcon g, Point i) {
         character = new JButton();
-        
+        location = i;
     }
     
     public void checkCollision(Character char2){

@@ -20,12 +20,13 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         theme2 = new JButton("Thanksgiving Theme");
         theme3 = new JButton("Christmas Theme");
         gameBoard = new GamePanel(chosenTheme);
+
         characterLoop = new Timer(100, this);
         characterLoopLeft = new Timer(100,this);
         gameTimer = new Timer(100, this);
         
-        gameBoard.player.character.addKeyListener(this);
-        gameBoard.player.character.setFocusable(true);
+        //gameBoard.player.character.addKeyListener(this);
+        //gameBoard.player.character.setFocusable(true);
     }
     
     public void actionPerformed(ActionEvent e) {
