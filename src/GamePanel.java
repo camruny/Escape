@@ -17,9 +17,9 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel{
     Player player;
-    StartPanel sp;
     Level currentLevel;
     ArrayList allChars;
+    Theme gameTheme;
     ImageIcon keyPic = new ImageIcon("images/key.png");
     
     //Not in GamePanel
@@ -46,8 +46,10 @@ public class GamePanel extends JPanel{
         //characterLoopLeft = new Timer(100,this);
         //gameTimer = new Timer(100, this);
         
-        player = new Player(new ImageIcon("images/mario/mario1.png"), new Point(50,50));
-        player.character.setIcon(new ImageIcon("images/mario/mario1.png"));
+        gameTheme = t;
+        
+        player = new Player(gameTheme.playerPic, new Point(50,50));
+        player.character.setIcon(gameTheme.playerPic);
         //Windows transparency here
         player.character.setOpaque(false);
         player.character.setContentAreaFilled(false);
@@ -55,11 +57,17 @@ public class GamePanel extends JPanel{
         player.character.setBorderPainted(false);
         add(player.character);
         player.character.setSize(40, 75);
-        player.character.setLocation(characterx, charactery);
+        player.character.setLocation(player.location.x, player.location.y);
         
         //adds the first key
         addKey();
         
+        repaint();
+    }
+    
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.drawImage(gameTheme.backgroundPic, 0, 0, this);
     }
     
     //Does Not Exist In Diagram

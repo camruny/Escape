@@ -1,4 +1,5 @@
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -19,8 +20,9 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         theme1 = new JButton("Halloween Theme");
         theme2 = new JButton("Thanksgiving Theme");
         theme3 = new JButton("Christmas Theme");
-        chosenTheme = new Theme(new ImageIcon("images/mario/mario1.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/halloween.png"));
+        chosenTheme = new Theme(new ImageIcon("images/mario/mario1-copy.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/halloween.png"));
         gameBoard = new GamePanel(chosenTheme);
+        chosenTheme.backgroundPic = chosenTheme.backgroundIcon.getImage();
 
         characterLoop = new Timer(100, this);
         characterLoopLeft = new Timer(100,this);
@@ -51,20 +53,20 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         if(obj == theme1){
             chosenTheme.playerPic = new ImageIcon("images/mario/mario2.png");
             chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
-            chosenTheme.backgroundPic = new ImageIcon("images/backgrounds/halloween.png");
+            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
         }
         if(obj == theme2){
             chosenTheme.playerPic = new ImageIcon("images/mario/mario2.png");
             chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
-            chosenTheme.backgroundPic = new ImageIcon("images/backgrounds/halloween.png");
+            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
         }
         if(obj == theme3){
             chosenTheme.playerPic = new ImageIcon("images/mario/mario2.png");
             chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
-            chosenTheme.backgroundPic = new ImageIcon("images/backgrounds/halloween.png");
+            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
         }
     }
-
+    
     @Override
     public void keyTyped(KeyEvent e) {
     }
@@ -74,26 +76,26 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
          if(e.getKeyCode() == KeyEvent.VK_UP)    {
             gameTimer.start();
             characterLoop.start();
-            gameBoard.charactery = gameBoard.charactery - 2;
-            gameBoard.player.character.setLocation(gameBoard.characterx, gameBoard.charactery);
+            gameBoard.player.location.y -= 2;
+            gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
          }
          if(e.getKeyCode() == KeyEvent.VK_DOWN)    {
             gameTimer.start();
             characterLoop.start();
-            gameBoard.charactery = gameBoard.charactery + 2;
-            gameBoard.player.character.setLocation(gameBoard.characterx, gameBoard.charactery);
+            gameBoard.player.location.y += 2;
+            gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
          }
          if(e.getKeyCode() == KeyEvent.VK_LEFT)    {
             gameTimer.start();
             characterLoop.start();
-            gameBoard.characterx = gameBoard.characterx - 2;
-            gameBoard.player.character.setLocation(gameBoard.characterx, gameBoard.charactery);
+            gameBoard.player.location.x -= 2;
+            gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
          }
          if(e.getKeyCode() == KeyEvent.VK_RIGHT)    {
             gameTimer.start();
             characterLoop.start();
-            gameBoard.characterx = gameBoard.characterx + 2;
-            gameBoard.player.character.setLocation(gameBoard.characterx, gameBoard.charactery);
+            gameBoard.player.location.x += 2;
+            gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
          }
     }
 

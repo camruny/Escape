@@ -14,13 +14,6 @@ public class Player extends Character{
         
     }
     
-    public void changeCharNum(){
-        characterNum += 1;
-        if(characterNum >= 3){
-            characterNum = 1;
-        }
-    }
-    
     public void keyPressed(KeyEvent e){
         
     }
