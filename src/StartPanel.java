@@ -30,41 +30,15 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         
         gameBoard.player.character.addKeyListener(this);
         gameBoard.player.character.setFocusable(true);
+        theme1.addActionListener(this);
+        theme2.addActionListener(this);
+        theme3.addActionListener(this);
+        start.addActionListener(this);
         
         add(start);
         add(theme1);
         add(theme2);
         add(theme3);
-    }
-    
-    public void actionPerformed(ActionEvent e) {
-        Object obj = e.getSource();
-        
-        if(obj == start){
-            add(gameBoard.player.character);
-            add(gameBoard.key.key);
-        }
-        if(obj== characterLoop) {
-            chosenTheme.changeCharacter();
-        }
-        if(obj == characterLoopLeft)    {
-            chosenTheme.changeCharacterLeft();
-        }
-        if(obj == theme1){
-            chosenTheme.playerPic = new ImageIcon("images/mario/mario2.png");
-            chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
-            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
-        }
-        if(obj == theme2){
-            chosenTheme.playerPic = new ImageIcon("images/mario/mario2.png");
-            chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
-            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
-        }
-        if(obj == theme3){
-            chosenTheme.playerPic = new ImageIcon("images/mario/mario2.png");
-            chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
-            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
-        }
     }
     
     @Override
@@ -117,5 +91,36 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             characterLoop.stop();
             gameTimer.stop();
          }
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+        Object obj = e.getSource();
+        
+        if(obj == start){
+            gameBoard.add(gameBoard.player.character);
+            gameBoard.addKey();
+            System.out.println("Start Clicked!");
+        }
+        if(obj == characterLoop) {
+            chosenTheme.changeCharacter();
+        }
+        if(obj == characterLoopLeft)    {
+            chosenTheme.changeCharacterLeft();
+        }
+        if(obj == theme1){
+            chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
+            chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
+            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
+        }
+        if(obj == theme2){
+            chosenTheme.playerPic = new ImageIcon("images/mario/mario2.png");
+            chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
+            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
+        }
+        if(obj == theme3){
+            chosenTheme.playerPic = new ImageIcon("images/mario/mario3.png");
+            chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
+            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
+        }
     }
 }

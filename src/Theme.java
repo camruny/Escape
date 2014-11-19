@@ -27,21 +27,21 @@ public class Theme {
         if (gameBoard.player.characterNum == 1){
             //playerPic = new ImageIcon("images/mario/mario1.png");
             System.out.println(gameBoard.player.characterNum);
+            playerPic = new ImageIcon("images/mario/mario2.png");
             gameBoard.player.character.setIcon(playerPic);
             gameBoard.player.characterNum = 2;
-            playerPic = new ImageIcon("images/mario/mario2.png");
         }
-        if (gameBoard.player.characterNum == 2){
-            gameBoard.player.character.setIcon(playerPic);
+        else if (gameBoard.player.characterNum == 2){
             System.out.println(gameBoard.player.characterNum);
-            gameBoard.player.characterNum = 3;
             playerPic = new ImageIcon("images/mario/mario3.png");
-        }
-        if (gameBoard.player.characterNum == 3){
             gameBoard.player.character.setIcon(playerPic);
+            gameBoard.player.characterNum = 3;
+        }
+        else if (gameBoard.player.characterNum == 3){
             System.out.println(gameBoard.player.characterNum);
-            gameBoard.player.characterNum = 1;
             playerPic = new ImageIcon("images/mario/mario1.png");
+            gameBoard.player.character.setIcon(playerPic);
+            gameBoard.player.characterNum = 1;
         }
 
         /*changes the image icon of the player to make it appear as if it is walking

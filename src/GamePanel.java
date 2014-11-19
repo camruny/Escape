@@ -20,7 +20,7 @@ public class GamePanel extends JPanel{
     Level currentLevel;
     ArrayList allChars;
     Theme gameTheme;
-    ImageIcon keyPic = new ImageIcon("images/key.png");
+    ImageIcon keyPic = new ImageIcon("images/key1.png");
     
     //Not in GamePanel
     Key key;
