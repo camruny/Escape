@@ -20,7 +20,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         theme1 = new JButton("Halloween Theme");
         theme2 = new JButton("Thanksgiving Theme");
         theme3 = new JButton("Christmas Theme");
-        chosenTheme = new Theme(new ImageIcon("images/mario/mario1-copy.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/halloween.png"));
+        chosenTheme = new Theme(new ImageIcon("images/mario/mario1-copy.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/bg-thanksgiving.png"));
         gameBoard = new GamePanel(chosenTheme);
         chosenTheme.backgroundPic = chosenTheme.backgroundIcon.getImage();
 
@@ -61,7 +61,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
          }
          if(e.getKeyCode() == KeyEvent.VK_LEFT)    {
             gameTimer.start();
-            characterLoop.start();
+            characterLoopLeft.start();
             gameBoard.player.location.x -= 2;
             gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
          }
@@ -84,7 +84,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameTimer.stop();
          }
         if(e.getKeyCode() == KeyEvent.VK_LEFT)    {
-            characterLoop.stop();
+            characterLoopLeft.stop();
             gameTimer.stop();
          }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT)    {
@@ -101,13 +101,14 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.addKey();
             System.out.println("Start Clicked!");
         }
-        if(obj == characterLoop) {
-            chosenTheme.changeCharacter();
+        if(obj == characterLoop){
+            gameBoard.changeCharacter();
         }
-        if(obj == characterLoopLeft)    {
-            chosenTheme.changeCharacterLeft();
+        if(obj == characterLoopLeft){
+            gameBoard.changeCharacterLeft();
         }
         if(obj == theme1){
+            gameBoard.mario1 = new ImageIcon("images/mario/");
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
             chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");

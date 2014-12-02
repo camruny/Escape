@@ -38,6 +38,14 @@ public class GamePanel extends JPanel{
     
     //counts the keys the user has collected
     int keysCollected = 0;
+    
+    //adds the player pictures to the JButton
+    ImageIcon mario1 = new ImageIcon("images/mario/mario1.png");
+    ImageIcon mario2 = new ImageIcon("images/mario/mario2.png");
+    ImageIcon mario3 = new ImageIcon("images/mario/mario3.png");
+    ImageIcon mario1left = new ImageIcon("images/mario/mario1left.png");
+    ImageIcon mario2left = new ImageIcon("images/mario/mario2left.png");
+    ImageIcon mario3left = new ImageIcon("images/mario/mario3left.png");
         
     public GamePanel(Theme t)  {
         
@@ -111,5 +119,36 @@ public class GamePanel extends JPanel{
     
     public void keyPressed(KeyEvent e){
         
+    }
+    
+    public void changeCharacter()    {
+        if (player.characterNum == 1){
+            player.character.setIcon(mario1);
+            player.characterNum = 2;
+        }
+        else if (player.characterNum == 2){
+            player.character.setIcon(mario2);
+            player.characterNum = 3;
+        }
+        else if (player.characterNum == 3){
+            player.character.setIcon(mario3);
+            player.characterNum = 1;
+        }
+    }
+    
+    public void changeCharacterLeft()    {
+        //changes the image icon of the player to make it appear as if it is walking
+        if (player.characterNum == 1){
+            player.character.setIcon(mario1left);
+            player.characterNum = 2;
+        }
+        else if (player.characterNum == 2){
+            player.character.setIcon(mario2left);
+            player.characterNum = 3;
+        }
+        else if (player.characterNum == 3){
+            player.character.setIcon(mario3left);
+            player.characterNum = 1;
+        }
     }
 }
