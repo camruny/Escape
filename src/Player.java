@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 
 public class Player extends Character{
     int characterNum;
+    
     public Player(ImageIcon g, Point i) {
         super(g, i);
         characterNum = 1;
@@ -17,4 +18,5 @@ public class Player extends Character{
     public void keyPressed(KeyEvent e){
         
     }
+   
 }
