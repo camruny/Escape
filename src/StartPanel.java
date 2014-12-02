@@ -97,7 +97,10 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
     
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
-        
+        if(obj == gameTimer)
+        {
+            gameBoard.player.checkCollision(gameBoard.key);
+        }
         if(obj == start){
             gameBoard.add(gameBoard.player.character);
             gameBoard.addKey();

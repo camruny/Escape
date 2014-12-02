@@ -19,6 +19,27 @@ public class Character extends JLabel{
     }
     
     public void checkCollision(Character char2){
+         //Get minimum and maximum values for collision detection
+            int minX = this.location.x - this.character.getWidth();
+            int maxX = this.location.x + this.character.getWidth();
+            int minY = this.location.y - this.character.getHeight();
+            int maxY = this.location.y + this.character.getHeight();
+            
+            //System.out.println("Width: " + this.character.getWidth() + " Height: " + this.character.getHeight());            System.out.println("Min X: " + minX + " Max X: " + maxX + " Min Y: " + minY + " Max Y: " + maxY);
+            //System.out.println("Location of Key X: " + char2.character.getLocation().x + " Location of Key Y: " +  char2.character.getLocation().y);
+            //If player touches any of the other objects execute this loop
+            if((char2.character.getLocation().x >= minX && 
+                char2.character.getLocation().x <= maxX && 
+                char2.character.getLocation().y <= maxY && 
+                char2.character.getLocation().y >= minY))
+            {
+                System.out.println("Collision");
+            }
+            else
+            {
+                System.out.println("No collision!");
+            }
+        
         
     }
     

@@ -83,15 +83,15 @@ public class GamePanel extends JPanel{
         int randomNum2 = rand.nextInt((400-10)+ 1) + 10;   
         keyy = randomNum2; 
         key = new Key(keyPic, new Point(50,50));
-        key.key.setIcon(keyPic);
-        key.key.setSize(20, 42);
+        key.character.setIcon(keyPic);
+        key.character.setSize(20, 42);
         //Windows transparency
-        key.key.setOpaque(false);
-        key.key.setContentAreaFilled(false);
+        key.character.setOpaque(false);
+        key.character.setContentAreaFilled(false);
         //end Windows transparency
-        key.key.setBorderPainted(false);
-        key.key.setLocation(keyx, keyy);
-        add(key.key);
+        key.character.setBorderPainted(false);
+        key.character.setLocation(keyx, keyy);
+        add(key.character);
     }
     
     public void levelCompleted(){
