@@ -15,6 +15,7 @@ public class GameFrame extends JFrame {
         getContentPane().add(sp.gameBoard, "Center");
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setSize (640, 480);
+        setLocationRelativeTo(null);
         setVisible(true);
         
     }
