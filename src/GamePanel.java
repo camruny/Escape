@@ -69,13 +69,6 @@ public class GamePanel extends JPanel{
         
         //adds the first key
         addKey();
-        
-        repaint();
-    }
-    
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        g.drawImage(gameTheme.backgroundPic, 0, 0, this);
     }
     
     //Does Not Exist In Diagram
@@ -150,5 +143,10 @@ public class GamePanel extends JPanel{
             player.character.setIcon(mario3left);
             player.characterNum = 1;
         }
+    }
+    
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.drawImage(gameTheme.backgroundPic, 0, 0, this);
     }
 }

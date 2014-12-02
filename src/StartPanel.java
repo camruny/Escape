@@ -39,6 +39,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         add(theme1);
         add(theme2);
         add(theme3);
+        
+        repaint();
     }
     
     @Override
@@ -112,16 +114,25 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
             chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
+            gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
+            gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
+            gameBoard.repaint();
         }
         if(obj == theme2){
-            chosenTheme.playerPic = new ImageIcon("images/mario/mario2.png");
+            chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
             chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
-            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
+            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-thanksgiving.png");
+            gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-thanksgiving.png");
+            gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
+            gameBoard.repaint();
         }
         if(obj == theme3){
-            chosenTheme.playerPic = new ImageIcon("images/mario/mario3.png");
+            chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
             chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
-            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
+            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/");
+            gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/");
+            gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
+            gameBoard.repaint();
         }
     }
 }
