@@ -6,11 +6,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class StartPanel extends JPanel implements ActionListener, KeyListener{
     JButton start, theme1, theme2, theme3;
+    JLabel keysRemaining;
     GamePanel gameBoard;
     Theme chosenTheme;
     Timer characterLoop, characterLoopLeft, gameTimer;
@@ -20,6 +22,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         theme1 = new JButton("Halloween Theme");
         theme2 = new JButton("Thanksgiving Theme");
         theme3 = new JButton("Christmas Theme");
+        keysRemaining = new JLabel("Keys Remaining: " );
         chosenTheme = new Theme(new ImageIcon("images/mario/mario1.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/bg-thanksgiving.png"));
         gameBoard = new GamePanel(chosenTheme);
         chosenTheme.backgroundPic = chosenTheme.backgroundIcon.getImage();
@@ -39,6 +42,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         add(theme1);
         add(theme2);
         add(theme3);
+        add(keysRemaining);
+        keysRemaining.setVisible(false);
         
         repaint();
     }
@@ -120,6 +125,11 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             gameBoard.repaint();
+            start.setVisible(false);
+            theme1.setVisible(false);
+            theme2.setVisible(false);
+            theme3.setVisible(false);
+            keysRemaining.setVisible(true);
         }
         if(obj == theme2){
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
@@ -128,6 +138,11 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-thanksgiving.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             gameBoard.repaint();
+            start.setVisible(false);
+            theme1.setVisible(false);
+            theme2.setVisible(false);
+            theme3.setVisible(false);
+            keysRemaining.setVisible(true);
         }
         if(obj == theme3){
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
@@ -136,6 +151,11 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             gameBoard.repaint();
+            start.setVisible(false);
+            theme1.setVisible(false);
+            theme2.setVisible(false);
+            theme3.setVisible(false);
+            keysRemaining.setVisible(true);
         }
     }
 }

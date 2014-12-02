@@ -13,11 +13,11 @@ import javax.swing.JButton;
  * @author Cameron
  */
 public class Key extends Character{
-    JButton key;
+    int keysLeft;
 
     public Key(ImageIcon g, Point i) {
         super(g, i);
-        key = new JButton();
+        keysLeft = 5;
     }
     
 }

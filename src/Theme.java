@@ -8,7 +8,7 @@ public class Theme {
     GamePanel gameBoard;
     
     public Theme(ImageIcon p, ImageIcon e, ImageIcon bg){
-        playerPic = new ImageIcon("images/mario/mario1-copy.png");
+        playerPic = new ImageIcon("images/mario/mario1.png");
         enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
         backgroundIcon = new ImageIcon("images/backgrounds/bg-thanksgiving.png");
         gameBoard = new GamePanel(this);
