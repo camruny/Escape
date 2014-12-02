@@ -52,25 +52,25 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
          if(e.getKeyCode() == KeyEvent.VK_UP)    {
             gameTimer.start();
             characterLoop.start();
-            gameBoard.player.location.y -= 2;
+            gameBoard.player.location.y -= gameBoard.player.getSpeed();
             gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
          }
          if(e.getKeyCode() == KeyEvent.VK_DOWN)    {
             gameTimer.start();
             characterLoop.start();
-            gameBoard.player.location.y += 2;
+            gameBoard.player.location.y += gameBoard.player.getSpeed();
             gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
          }
          if(e.getKeyCode() == KeyEvent.VK_LEFT)    {
             gameTimer.start();
             characterLoopLeft.start();
-            gameBoard.player.location.x -= 2;
+            gameBoard.player.location.x -= gameBoard.player.getSpeed();
             gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
          }
          if(e.getKeyCode() == KeyEvent.VK_RIGHT)    {
             gameTimer.start();
             characterLoop.start();
-            gameBoard.player.location.x += 2;
+            gameBoard.player.location.x += gameBoard.player.getSpeed();
             gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
          }
     }
