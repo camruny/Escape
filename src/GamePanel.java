@@ -104,7 +104,7 @@ public class GamePanel extends JPanel{
     }
     
     public void gameWin(){
-        
+        System.out.println("You Win!");
     }
     
     public void gameLose(){
