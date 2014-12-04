@@ -16,6 +16,7 @@ public class Character extends JLabel{
         character = new JButton();
         location = i;
         speed = DEFAULT_SPEED;
+        character.setVisible(false);
     }
     
     public void checkCollision(Character char2){

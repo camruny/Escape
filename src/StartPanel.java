@@ -22,7 +22,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         theme1 = new JButton("Halloween Theme");
         theme2 = new JButton("Thanksgiving Theme");
         theme3 = new JButton("Christmas Theme");
-        keysRemaining = new JLabel("Keys Remaining: " );
+        keysRemaining = new JLabel("Keys Remaining: ");
         chosenTheme = new Theme(new ImageIcon("images/mario/mario1.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/halloween.png"));
         gameBoard = new GamePanel(chosenTheme);
         chosenTheme.backgroundPic = chosenTheme.backgroundIcon.getImage();
@@ -109,11 +109,11 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         if(obj == start){
             gameBoard.add(gameBoard.player.character);
             gameBoard.addKey();
-            System.out.println("Start Clicked!");
             start.setVisible(false);
             theme1.setVisible(false);
             theme2.setVisible(false);
             theme3.setVisible(false);
+            gameBoard.player.character.setVisible(true);
             keysRemaining.setVisible(true);
         }
         if(obj == characterLoop){
@@ -129,6 +129,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
+            gameBoard.player.keysLeft = 5;
+            keysRemaining.setText("Keys Remaining: " + gameBoard.player.keysLeft);
             gameBoard.repaint();
         }
         if(obj == theme2){
@@ -137,6 +139,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-thanksgiving.png");
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-thanksgiving.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
+            gameBoard.player.keysLeft = 5;
+            keysRemaining.setText("Keys Remaining: " + gameBoard.player.keysLeft);
             gameBoard.repaint();
         }
         if(obj == theme3){
@@ -145,6 +149,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/");
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-christmas.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
+            gameBoard.player.keysLeft = 5;
+            keysRemaining.setText("Keys Remaining: " + gameBoard.player.keysLeft);
             gameBoard.repaint();
         }
     }

@@ -70,8 +70,6 @@ public class GamePanel extends JPanel{
     }
     
     //Does Not Exist In Diagram
-    
-    //Does Not Exist In Diagram
     public void addKey() {
         //puts the key in a random position on the screen 
         Random rand = new Random();
