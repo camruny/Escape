@@ -9,7 +9,7 @@ public class Theme {
     
     public Theme(ImageIcon p, ImageIcon e, ImageIcon bg){
         playerPic = new ImageIcon("images/mario/mario1.png");
-        enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
+        enemyPic = new ImageIcon("images/bowser/bowserRight.png");
         keyPic = new ImageIcon("images/key1.png");
         backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
         gameBoard = new GamePanel(this);

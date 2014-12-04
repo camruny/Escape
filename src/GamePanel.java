@@ -17,6 +17,7 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel{
     Player player;
+    Enemy enemy;
     Level currentLevel;
     ArrayList allChars;
     Theme gameTheme;
@@ -57,6 +58,7 @@ public class GamePanel extends JPanel{
         gameTheme = t;
         
         player = new Player(gameTheme.playerPic, new Point(50,50));
+        enemy = new Enemy(5, gameTheme.enemyPic, new Point(350,50));
         //key = new Key(gameTheme.keyPic, new Point(50,50));
         player.character.setIcon(gameTheme.playerPic);
         //Windows transparency here
@@ -64,7 +66,6 @@ public class GamePanel extends JPanel{
         player.character.setContentAreaFilled(false);
         //end Windows transparency
         player.character.setBorderPainted(false);
-        add(player.character);
         player.character.setSize(40, 75);
         player.character.setLocation(player.location.x, player.location.y);
         

@@ -119,12 +119,14 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.player.keysLeft = 5;
             keysRemaining.setText("Keys Remaining: " + gameBoard.player.keysLeft);
             gameBoard.add(gameBoard.player.character);
+            gameBoard.add(gameBoard.enemy.character);
             gameBoard.addKey();
             start.setVisible(false);
             theme1.setVisible(false);
             theme2.setVisible(false);
             theme3.setVisible(false);
             gameBoard.player.character.setVisible(true);
+            gameBoard.enemy.character.setVisible(true);
             gameBoard.key.character.setVisible(true);
             keysRemaining.setVisible(true);
         }

@@ -6,6 +6,8 @@ public class Enemy extends Character{
     
     public Enemy(int s, ImageIcon g, Point i){
         super(g, i);
+        speed = s;
+        this.character.setIcon(g);
     }
     
     public void move(){
