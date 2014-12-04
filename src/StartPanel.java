@@ -108,7 +108,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             if(gameBoard.player.collisionOccurred){
                 gameBoard.player.keysLeft--;
                 keysRemaining.setText("Keys Remaining: " + gameBoard.player.keysLeft);
-                
+                gameBoard.removeKey();
+                gameBoard.player.collisionOccurred = false;
                 if(gameBoard.player.keysLeft == 0){
                     System.out.println("You Win!");
                 }

@@ -36,12 +36,12 @@ public class Character extends JLabel{
             char2.character.getLocation().y <= maxY && 
             char2.character.getLocation().y >= minY))
         {
-            System.out.println("Collision");
+            //System.out.println("Collision");
             collisionOccurred = true;
         }
         else
         {
-            System.out.println("No collision!");
+            //System.out.println("No collision!");
         }
         
         

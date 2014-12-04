@@ -57,7 +57,7 @@ public class GamePanel extends JPanel{
         gameTheme = t;
         
         player = new Player(gameTheme.playerPic, new Point(50,50));
-        key = new Key(gameTheme.keyPic, new Point(50,50));
+        //key = new Key(gameTheme.keyPic, new Point(50,50));
         player.character.setIcon(gameTheme.playerPic);
         //Windows transparency here
         player.character.setOpaque(false);
@@ -71,7 +71,8 @@ public class GamePanel extends JPanel{
     }
     
     //Does Not Exist In Diagram
-    public void addKey() {
+    public void addKey(){
+        key = new Key(gameTheme.keyPic, new Point(50,50));
         //puts the key in a random position on the screen 
         Random rand = new Random();
         int randomNum1 = rand.nextInt((600-10)+ 1) + 10;   
@@ -88,7 +89,14 @@ public class GamePanel extends JPanel{
         key.character.setBorderPainted(false);
         key.character.setLocation(key.keyx, key.keyy);
         add(key.character);
+        key.character.setVisible(true);
         System.out.println("Add key called.");
+    }
+    
+    public void removeKey(){
+        this.remove(key.character);
+        addKey();
+        repaint();
     }
     
     public void levelCompleted(){
