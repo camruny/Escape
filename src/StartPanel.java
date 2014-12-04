@@ -23,7 +23,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         theme2 = new JButton("Thanksgiving Theme");
         theme3 = new JButton("Christmas Theme");
         keysRemaining = new JLabel("Keys Remaining: " );
-        chosenTheme = new Theme(new ImageIcon("images/mario/mario1.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/bg-thanksgiving.png"));
+        chosenTheme = new Theme(new ImageIcon("images/mario/mario1.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/halloween.png"));
         gameBoard = new GamePanel(chosenTheme);
         chosenTheme.backgroundPic = chosenTheme.backgroundIcon.getImage();
 
@@ -110,6 +110,11 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.add(gameBoard.player.character);
             gameBoard.addKey();
             System.out.println("Start Clicked!");
+            start.setVisible(false);
+            theme1.setVisible(false);
+            theme2.setVisible(false);
+            theme3.setVisible(false);
+            keysRemaining.setVisible(true);
         }
         if(obj == characterLoop){
             gameBoard.changeCharacter();
@@ -125,11 +130,6 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             gameBoard.repaint();
-            start.setVisible(false);
-            theme1.setVisible(false);
-            theme2.setVisible(false);
-            theme3.setVisible(false);
-            keysRemaining.setVisible(true);
         }
         if(obj == theme2){
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
@@ -138,24 +138,14 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-thanksgiving.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             gameBoard.repaint();
-            start.setVisible(false);
-            theme1.setVisible(false);
-            theme2.setVisible(false);
-            theme3.setVisible(false);
-            keysRemaining.setVisible(true);
         }
         if(obj == theme3){
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
             chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/");
-            gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/");
+            gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-christmas.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             gameBoard.repaint();
-            start.setVisible(false);
-            theme1.setVisible(false);
-            theme2.setVisible(false);
-            theme3.setVisible(false);
-            keysRemaining.setVisible(true);
         }
     }
 }

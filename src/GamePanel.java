@@ -67,8 +67,6 @@ public class GamePanel extends JPanel{
         player.character.setSize(40, 75);
         player.character.setLocation(player.location.x, player.location.y);
         
-        //adds the first key
-        addKey();
     }
     
     //Does Not Exist In Diagram
