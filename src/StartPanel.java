@@ -129,6 +129,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.enemy.character.setVisible(true);
             gameBoard.key.character.setVisible(true);
             keysRemaining.setVisible(true);
+            gameBoard.player.character.requestFocus();
         }
         if(obj == characterLoop){
             gameBoard.changeCharacter();
@@ -139,7 +140,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         if(obj == theme1){
             gameBoard.mario1 = new ImageIcon("images/mario/mario1.png");
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
-            chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
+            chosenTheme.enemyPic = new ImageIcon("images/bowser/bowserRight.png");
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
@@ -159,7 +160,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         }
         if(obj == theme3){
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
-            chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
+            chosenTheme.enemyPic = new ImageIcon("images/bowser/.png");
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/");
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-christmas.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();

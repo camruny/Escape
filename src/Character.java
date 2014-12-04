@@ -23,9 +23,9 @@ public class Character extends JLabel{
     
     public void checkCollision(Character char2){
          //Get minimum and maximum values for collision detection
-        int minX = this.location.x - this.character.getWidth();
+        int minX = this.location.x;
         int maxX = this.location.x + this.character.getWidth();
-        int minY = this.location.y - this.character.getHeight();
+        int minY = this.location.y;
         int maxY = this.location.y + this.character.getHeight();
 
         //System.out.println("Width: " + this.character.getWidth() + " Height: " + this.character.getHeight());            System.out.println("Min X: " + minX + " Max X: " + maxX + " Min Y: " + minY + " Max Y: " + maxY);

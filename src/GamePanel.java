@@ -19,13 +19,10 @@ public class GamePanel extends JPanel{
     Player player;
     Enemy enemy;
     Level currentLevel;
-    ArrayList allChars;
+    ArrayList<Character> allChars;
     Theme gameTheme;
     Key key;
-    //ImageIcon keyPic = new ImageIcon("images/key1.png");
-    
-    //Not in GamePanel
-    
+    //ImageIcon keyPic = new ImageIcon("images/key1.png");    
     
     //adds the key image to the JButton
     //ImageIcon keyPic = new ImageIcon("images/key.png");
@@ -58,9 +55,11 @@ public class GamePanel extends JPanel{
         gameTheme = t;
         
         player = new Player(gameTheme.playerPic, new Point(50,50));
-        enemy = new Enemy(5, gameTheme.enemyPic, new Point(350,50));
+        enemy = new Enemy(5, gameTheme.enemyPic, new Point(150,150));
+        allChars = new ArrayList<Character>();
         //key = new Key(gameTheme.keyPic, new Point(50,50));
         player.character.setIcon(gameTheme.playerPic);
+        enemy.character.setIcon(gameTheme.enemyPic);
         //Windows transparency here
         player.character.setOpaque(false);
         player.character.setContentAreaFilled(false);
@@ -68,7 +67,10 @@ public class GamePanel extends JPanel{
         player.character.setBorderPainted(false);
         player.character.setSize(40, 75);
         player.character.setLocation(player.location.x, player.location.y);
-        
+        enemy.character.setLocation(enemy.location.x, enemy.location.y);
+        allChars.add(player);
+        allChars.add(enemy);
+        allChars.add(key);
     }
     
     //Does Not Exist In Diagram
