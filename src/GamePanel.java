@@ -20,10 +20,11 @@ public class GamePanel extends JPanel{
     Level currentLevel;
     ArrayList allChars;
     Theme gameTheme;
-    ImageIcon keyPic = new ImageIcon("images/key1.png");
+    Key key;
+    //ImageIcon keyPic = new ImageIcon("images/key1.png");
     
     //Not in GamePanel
-    Key key;
+    
     
     //adds the key image to the JButton
     //ImageIcon keyPic = new ImageIcon("images/key.png");
@@ -33,8 +34,7 @@ public class GamePanel extends JPanel{
     int charactery = 100;
     
     //initializes the key position
-    int keyx = 0;
-    int keyy = 0;
+    
     
     //counts the keys the user has collected
     int keysCollected = 0;
@@ -57,6 +57,7 @@ public class GamePanel extends JPanel{
         gameTheme = t;
         
         player = new Player(gameTheme.playerPic, new Point(50,50));
+        key = new Key(gameTheme.keyPic, new Point(50,50));
         player.character.setIcon(gameTheme.playerPic);
         //Windows transparency here
         player.character.setOpaque(false);
@@ -74,20 +75,20 @@ public class GamePanel extends JPanel{
         //puts the key in a random position on the screen 
         Random rand = new Random();
         int randomNum1 = rand.nextInt((600-10)+ 1) + 10;   
-        keyx = randomNum1; 
+        key.keyx = randomNum1; 
         
         int randomNum2 = rand.nextInt((400-10)+ 1) + 10;   
-        keyy = randomNum2; 
-        key = new Key(keyPic, new Point(50,50));
-        key.character.setIcon(keyPic);
+        key.keyy = randomNum2; 
+        key.character.setIcon(key.graphic);
         key.character.setSize(20, 42);
         //Windows transparency
         key.character.setOpaque(false);
         key.character.setContentAreaFilled(false);
         //end Windows transparency
         key.character.setBorderPainted(false);
-        key.character.setLocation(keyx, keyy);
+        key.character.setLocation(key.keyx, key.keyy);
         add(key.character);
+        System.out.println("Add key called.");
     }
     
     public void levelCompleted(){
