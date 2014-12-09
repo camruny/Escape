@@ -93,6 +93,7 @@ public class GamePanel extends JPanel{
         //adds the doors to the game panel
         addDoorOpened();
         addDoorClosed();
+        closeDoor();
     }
     
     //Does Not Exist In Diagram
@@ -126,6 +127,16 @@ public class GamePanel extends JPanel{
         doorClosed.character.setBorderPainted(false);
         doorClosed.character.setVisible(true);
         add(doorClosed.character);
+    }
+    
+    public void openDoor()  {
+        doorOpened.character.setVisible(true);
+        doorClosed.character.setVisible(false);
+    }
+    
+    public void closeDoor() {
+        doorOpened.character.setVisible(false);
+        doorClosed.character.setVisible(true);
     }
     
     //Does Not Exist In Diagram

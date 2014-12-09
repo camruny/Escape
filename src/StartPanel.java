@@ -115,6 +115,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
                 gameBoard.player.collisionOccurred = false;
                 if(gameBoard.player.keysLeft == 0){
                     gameBoard.gameWin();
+                    gameBoard.openDoor();
                 }
             }
             
