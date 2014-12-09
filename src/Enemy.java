@@ -10,9 +10,25 @@ public class Enemy extends Character{
         this.character.setIcon(g);
     }
     
-    public void move(){
-        this.location.x++;
-        this.location.y++;
+    public void move(int playerx, int playery){
+        if(this.location.x >= playerx)
+        {
+            this.location.x -= speed;
+            this.graphic = new ImageIcon("images/bowser/bowserLeft.png");
+        }
+        else
+        {
+            this.location.x += speed;
+            this.graphic = new ImageIcon("images/bowser/bowserRight.png");
+        }
+        if(this.location.y > playery)
+        {
+            this.location.y -= speed;
+        }
+        else
+        {
+            this.location.y += speed;
+        }
     }
     
     public void increaseSpeed(){

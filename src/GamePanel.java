@@ -66,7 +66,10 @@ public class GamePanel extends JPanel{
         gameTheme = t;
         
         player = new Player(gameTheme.playerPic, new Point(50,50));
-        enemy = new Enemy(5, gameTheme.enemyPic, new Point(150,150));
+        Random rand = new Random();
+        int randomNum1 = rand.nextInt((600-10)+ 1) + 10;   
+        int randomNum2 = rand.nextInt((400-10)+ 1) + 10;  
+        enemy = new Enemy(3, gameTheme.enemyPic, new Point(randomNum1, randomNum2));
         currentLevel = new Level(1, 1, 1);
         allChars = new ArrayList<>();
         //key = new Key(gameTheme.keyPic, new Point(50,50));

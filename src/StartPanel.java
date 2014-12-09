@@ -84,19 +84,19 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
     public void keyReleased(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_UP)    {
             characterLoop.stop();
-            gameTimer.stop();
+            //gameTimer.stop();
          }
         if(e.getKeyCode() == KeyEvent.VK_DOWN)    {
             characterLoop.stop();
-            gameTimer.stop();
+            //gameTimer.stop();
          }
         if(e.getKeyCode() == KeyEvent.VK_LEFT)    {
             characterLoopLeft.stop();
-            gameTimer.stop();
+            //gameTimer.stop();
          }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT)    {
             characterLoop.stop();
-            gameTimer.stop();
+            //gameTimer.stop();
          }
     }
     
@@ -104,7 +104,11 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         Object obj = e.getSource();
         if(obj == gameTimer)
         {
-            //gameBoard.player.checkCollision(gameBoard.key);
+            
+            gameBoard.enemy.move(gameBoard.player.location.x, gameBoard.player.location.y);
+            gameBoard.enemy.character.setLocation(gameBoard.enemy.location.x,gameBoard.enemy.location.y);
+            gameBoard.enemy.character.setIcon(gameBoard.enemy.graphic);
+                
             if(gameBoard.player.location.x < 0)
             {
                 gameBoard.player.location.x = gameBoard.getWidth();
@@ -139,9 +143,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.player.checkCollision(gameBoard.enemy);
             if(gameBoard.player.collisionOccurred){
                 System.out.println("Ahhh bowser");
-                gameBoard.enemy.move();
-                gameBoard.enemy.location.x+=1;
-                gameBoard.enemy.location.y+=1;
+               
                 gameBoard.player.collisionOccurred = false;
             }
             
