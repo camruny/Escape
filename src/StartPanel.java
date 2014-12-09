@@ -105,6 +105,23 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         if(obj == gameTimer)
         {
             //gameBoard.player.checkCollision(gameBoard.key);
+            if(gameBoard.player.location.x < 0)
+            {
+                gameBoard.player.location.x = gameBoard.getWidth();
+            }
+            if(gameBoard.player.location.x > gameBoard.getWidth())
+            {
+                gameBoard.player.location.x = 0;
+            }
+            
+            if(gameBoard.player.location.y < 0)
+            {
+                gameBoard.player.location.y = gameBoard.getHeight();
+            }
+            if(gameBoard.player.location.y > gameBoard.getHeight())
+            {
+                gameBoard.player.location.y = 0;
+            }
             
             gameBoard.player.checkCollision(gameBoard.key);
             //gameBoard.player.checkCollision(gameBoard.enemy);
@@ -122,6 +139,9 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.player.checkCollision(gameBoard.enemy);
             if(gameBoard.player.collisionOccurred){
                 System.out.println("Ahhh bowser");
+                gameBoard.enemy.move();
+                gameBoard.enemy.location.x+=1;
+                gameBoard.enemy.location.y+=1;
                 gameBoard.player.collisionOccurred = false;
             }
             

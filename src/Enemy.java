@@ -11,7 +11,8 @@ public class Enemy extends Character{
     }
     
     public void move(){
-        
+        this.location.x++;
+        this.location.y++;
     }
     
     public void increaseSpeed(){
