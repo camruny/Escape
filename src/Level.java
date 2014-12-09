@@ -1,9 +1,11 @@
 public class Level {
-    String name;
+    int name;
     int numberOfKeys;
     int difficulty;
     
-    public Level(String n, int keys, int d){
-        
+    public Level(int n, int keys, int d){
+        name = n;
+        numberOfKeys = keys;
+        difficulty = d;
     }
 }

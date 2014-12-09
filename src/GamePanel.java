@@ -67,6 +67,7 @@ public class GamePanel extends JPanel{
         
         player = new Player(gameTheme.playerPic, new Point(50,50));
         enemy = new Enemy(5, gameTheme.enemyPic, new Point(150,150));
+        currentLevel = new Level(1, 1, 1);
         allChars = new ArrayList<>();
         //key = new Key(gameTheme.keyPic, new Point(50,50));
         player.character.setIcon(gameTheme.playerPic);
@@ -147,7 +148,24 @@ public class GamePanel extends JPanel{
     }
     
     public void levelCompleted(){
-        
+        if(currentLevel.name < 3){
+            currentLevel.name++;
+            System.out.println("LEVEL "+ currentLevel.name + "!");
+            player.character.setLocation(50,50);
+            enemy.character.setLocation(150,50);
+            player.location.x = 50;
+            player.location.y = 50;
+            enemy.location.x = 150;
+            enemy.location.y = 50;
+            if(currentLevel.name == 2){
+                currentLevel.numberOfKeys = 3;
+            }else if(currentLevel.name == 3){
+                currentLevel.numberOfKeys = 5;
+            }
+            removeKey();
+        }else if(currentLevel.name >= 3){
+            gameWin();
+        }
     }
     
     public void gameWin(){

@@ -5,12 +5,12 @@ import javax.swing.ImageIcon;
 
 public class Player extends Character{
     int characterNum;
-    int keysLeft;
+    //int keysLeft;
     
     public Player(ImageIcon g, Point i) {
         super(g, i);
         characterNum = 1;
-        keysLeft = 0;
+        //keysLeft = 0;
     }
     
     public void move(KeyEvent e){
