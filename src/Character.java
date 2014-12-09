@@ -42,9 +42,7 @@ public class Character extends JLabel{
         else
         {
             //System.out.println("No collision!");
-        }
-        
-        
+        }     
     }
     
     public void setSpeed(int i)

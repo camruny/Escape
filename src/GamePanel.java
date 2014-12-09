@@ -74,16 +74,27 @@ public class GamePanel extends JPanel{
         enemy.character.setIcon(gameTheme.enemyPic);
         //Windows transparency here
         player.character.setOpaque(false);
-        player.character.setContentAreaFilled(false);
+        player.character.setContentAreaFilled(true);
         //end Windows transparency
-        player.character.setBorderPainted(false);
+        player.character.setBorderPainted(true);
         player.character.setSize(40, 75);
         player.character.setLocation(player.location.x, player.location.y);
 
+        //enemy.character.setLocation(enemy.location.x, enemy.location.y);
+        enemy.character.setOpaque(false);
+        enemy.character.setContentAreaFilled(true);
+        //end Windows transparency
+        enemy.character.setBorderPainted(true);
+        enemy.character.setSize(70, 56);
         enemy.character.setLocation(enemy.location.x, enemy.location.y);
         allChars.add(player);
         allChars.add(enemy);
         allChars.add(key);
+        
+        //adds the doors to the game panel
+        addDoorOpened();
+        addDoorClosed();
+        closeDoor();
     }
     
     //Does Not Exist In Diagram
@@ -93,7 +104,6 @@ public class GamePanel extends JPanel{
         
         //adds the first key
         addAKey();
-        addDoorClosed();
         
     }
     
@@ -106,6 +116,7 @@ public class GamePanel extends JPanel{
         doorOpened.character.setSize(50,99);
         doorOpened.character.setLocation(300,0);
         doorOpened.character.setBorderPainted(false);
+        doorOpened.character.setVisible(false);
         add(doorOpened.character);
     }
     
@@ -115,7 +126,18 @@ public class GamePanel extends JPanel{
         doorClosed.character.setSize(50,99);
         doorClosed.character.setLocation(300,0);
         doorClosed.character.setBorderPainted(false);
+        doorClosed.character.setVisible(true);
         add(doorClosed.character);
+    }
+    
+    public void openDoor()  {
+        doorOpened.character.setVisible(true);
+        doorClosed.character.setVisible(false);
+    }
+    
+    public void closeDoor() {
+        doorOpened.character.setVisible(false);
+        doorClosed.character.setVisible(true);
     }
     
     //Does Not Exist In Diagram

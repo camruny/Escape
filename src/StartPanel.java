@@ -104,7 +104,10 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         Object obj = e.getSource();
         if(obj == gameTimer)
         {
+            //gameBoard.player.checkCollision(gameBoard.key);
+            
             gameBoard.player.checkCollision(gameBoard.key);
+            //gameBoard.player.checkCollision(gameBoard.enemy);
             if(gameBoard.player.collisionOccurred){
                 gameBoard.currentLevel.numberOfKeys--;
                 keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
@@ -112,8 +115,17 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
                 gameBoard.player.collisionOccurred = false;
                 if(gameBoard.currentLevel.numberOfKeys == 0){
                     gameBoard.levelCompleted();
+                    gameBoard.openDoor();
                 }
             }
+            
+            gameBoard.player.checkCollision(gameBoard.enemy);
+            if(gameBoard.player.collisionOccurred){
+                System.out.println("Ahhh bowser");
+                gameBoard.player.collisionOccurred = false;
+            }
+            
+            
         }
         if(obj == start){
             gameBoard.currentLevel.numberOfKeys = 1;
@@ -131,6 +143,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             keysRemaining.setVisible(true);
             gameBoard.enemy.character.setIcon(chosenTheme.enemyPic);
             gameBoard.player.character.requestFocus();
+            gameBoard.repaint();
         }
         if(obj == characterLoop){
             gameBoard.changeCharacter();
