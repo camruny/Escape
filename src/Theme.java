@@ -2,8 +2,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Theme {
-    ImageIcon playerPic, enemyPic, keyPic;
-    ImageIcon backgroundIcon;
+    ImageIcon playerPic, enemyPic, keyPic, backgroundIcon, doorOpenedImage, doorClosedImage;
     Image backgroundPic;
     GamePanel gameBoard;
     
@@ -12,6 +11,8 @@ public class Theme {
         enemyPic = new ImageIcon("images/bowser/bowserRight.png");
         keyPic = new ImageIcon("images/key1.png");
         backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
+        doorOpenedImage = new ImageIcon("images/doors/door_opened.png");
+        doorClosedImage = new ImageIcon("images/doors/door_closed.png");
         gameBoard = new GamePanel(this);
     }
     

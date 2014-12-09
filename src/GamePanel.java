@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -19,20 +20,21 @@ public class GamePanel extends JPanel{
     Player player;
     Enemy enemy;
     Level currentLevel;
+    Goal goal;
     ArrayList<Character> allChars;
     Theme gameTheme;
-
+    JLabel keysRemaining;
     Key key;
     //ImageIcon keyPic = new ImageIcon("images/key1.png");    
 
     ImageIcon keyPic = new ImageIcon("images/key1.png");
-    ImageIcon doorOpenedImage = new ImageIcon("images/doors/door_opened.png");
-    ImageIcon doorClosedImage = new ImageIcon("images/doors/door_closed.png");
+    //ImageIcon doorOpenedImage = new ImageIcon("images/doors/door_opened.png");
+    //ImageIcon doorClosedImage = new ImageIcon("images/doors/door_closed.png");
     
     //Not in GamePanel
 
-    Key doorClosed;
-    Key doorOpened;
+    //Key doorClosed;
+    //Key doorOpened;
 
     
     //adds the key image to the JButton
@@ -64,13 +66,14 @@ public class GamePanel extends JPanel{
         //gameTimer = new Timer(100, this);
         
         gameTheme = t;
-        
+        keysRemaining = new JLabel("Keys Remaining: ");
         player = new Player(gameTheme.playerPic, new Point(50,50));
         Random rand = new Random();
         int randomNum1 = rand.nextInt((600-10)+ 1) + 10;   
         int randomNum2 = rand.nextInt((400-10)+ 1) + 10;  
         enemy = new Enemy(3, gameTheme.enemyPic, new Point(randomNum1, randomNum2));
         currentLevel = new Level(1, 1, 1);
+        goal = new Goal(gameTheme.doorClosedImage, new Point(300, 0));
         allChars = new ArrayList<>();
         //key = new Key(gameTheme.keyPic, new Point(50,50));
         player.character.setIcon(gameTheme.playerPic);
@@ -95,9 +98,9 @@ public class GamePanel extends JPanel{
         allChars.add(key);
         
         //adds the doors to the game panel
-        addDoorOpened();
-        addDoorClosed();
-        closeDoor();
+        goal.addDoor();
+        goal.closeDoor();
+        add(goal.door.character);
     }
     
     //Does Not Exist In Diagram
@@ -112,7 +115,7 @@ public class GamePanel extends JPanel{
     
     //Does Not Exist In Diagram
     
-    
+    /*
     public void addDoorOpened()   {
         doorOpened = new Key(doorOpenedImage, new Point(50,50));
         doorOpened.character.setIcon(doorOpenedImage);
@@ -142,7 +145,7 @@ public class GamePanel extends JPanel{
         doorOpened.character.setVisible(false);
         doorClosed.character.setVisible(true);
     }
-    
+    */
     //Does Not Exist In Diagram
     public void addAKey() {
 
@@ -177,16 +180,17 @@ public class GamePanel extends JPanel{
             currentLevel.name++;
             System.out.println("LEVEL "+ currentLevel.name + "!");
             player.character.setLocation(50,50);
-            enemy.character.setLocation(150,50);
+            enemy.character.setLocation(500,50);
             player.location.x = 50;
             player.location.y = 50;
-            enemy.location.x = 150;
+            enemy.location.x = 500;
             enemy.location.y = 50;
             if(currentLevel.name == 2){
                 currentLevel.numberOfKeys = 3;
             }else if(currentLevel.name == 3){
                 currentLevel.numberOfKeys = 5;
             }
+            keysRemaining.setText("Keys Remaining: " + currentLevel.numberOfKeys);
             removeKey();
         }else if(currentLevel.name >= 3){
             gameWin();

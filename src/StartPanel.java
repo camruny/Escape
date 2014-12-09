@@ -12,7 +12,6 @@ import javax.swing.Timer;
 
 public class StartPanel extends JPanel implements ActionListener, KeyListener{
     JButton start, theme1, theme2, theme3;
-    JLabel keysRemaining;
     GamePanel gameBoard;
     Theme chosenTheme;
     Timer characterLoop, characterLoopLeft, gameTimer;
@@ -22,7 +21,6 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         theme1 = new JButton("Halloween Theme");
         theme2 = new JButton("Thanksgiving Theme");
         theme3 = new JButton("Christmas Theme");
-        keysRemaining = new JLabel("Keys Remaining: ");
         chosenTheme = new Theme(new ImageIcon("images/mario/mario1.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/halloween.png"));
         gameBoard = new GamePanel(chosenTheme);
         chosenTheme.backgroundPic = chosenTheme.backgroundIcon.getImage();
@@ -42,8 +40,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         add(theme1);
         add(theme2);
         add(theme3);
-        add(keysRemaining);
-        keysRemaining.setVisible(false);
+        add(gameBoard.keysRemaining);
+        gameBoard.keysRemaining.setVisible(false);
         
         repaint();
     }
@@ -131,12 +129,13 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             //gameBoard.player.checkCollision(gameBoard.enemy);
             if(gameBoard.player.collisionOccurred){
                 gameBoard.currentLevel.numberOfKeys--;
-                keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
+                gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
                 gameBoard.removeKey();
                 gameBoard.player.collisionOccurred = false;
                 if(gameBoard.currentLevel.numberOfKeys == 0){
-                    gameBoard.levelCompleted();
-                    gameBoard.openDoor();
+                    //THIS NEEDS PLACED WITHIN COLLISION DETECTION SYSTEM FOR LOCATION OF DOOR. DOOR LOCATION IS x = 300, y = 0
+                    //gameBoard.levelCompleted();
+                    gameBoard.goal.openDoor();
                 }
             }
             
@@ -151,7 +150,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         }
         if(obj == start){
             gameBoard.currentLevel.numberOfKeys = 1;
-            keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
+            gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
             gameBoard.add(gameBoard.player.character);
             gameBoard.add(gameBoard.enemy.character);
             gameBoard.addKey();
@@ -162,8 +161,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.player.character.setVisible(true);
             gameBoard.enemy.character.setVisible(true);
             gameBoard.key.character.setVisible(true);
-            keysRemaining.setVisible(true);
-            gameBoard.enemy.character.setIcon(chosenTheme.enemyPic);
+            gameBoard.keysRemaining.setVisible(true);
             gameBoard.player.character.requestFocus();
             gameBoard.repaint();
         }
@@ -181,7 +179,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             //gameBoard.player.keysLeft = 5;
-            keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
+            gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
             gameBoard.repaint();
         }
         if(obj == theme2){
@@ -191,7 +189,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-thanksgiving.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             //gameBoard.player.keysLeft = 5;
-            keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
+            gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
             gameBoard.repaint();
         }
         if(obj == theme3){
@@ -201,7 +199,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-christmas.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             //gameBoard.player.keysLeft = 5;
-            keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
+            gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
             gameBoard.repaint();
         }
     }
