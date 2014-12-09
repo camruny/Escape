@@ -73,17 +73,17 @@ public class GamePanel extends JPanel{
         enemy.character.setIcon(gameTheme.enemyPic);
         //Windows transparency here
         player.character.setOpaque(false);
-        player.character.setContentAreaFilled(false);
+        player.character.setContentAreaFilled(true);
         //end Windows transparency
-        player.character.setBorderPainted(false);
+        player.character.setBorderPainted(true);
         player.character.setSize(40, 75);
         player.character.setLocation(player.location.x, player.location.y);
 
         //enemy.character.setLocation(enemy.location.x, enemy.location.y);
         enemy.character.setOpaque(false);
-        enemy.character.setContentAreaFilled(false);
+        enemy.character.setContentAreaFilled(true);
         //end Windows transparency
-        enemy.character.setBorderPainted(false);
+        enemy.character.setBorderPainted(true);
         enemy.character.setSize(70, 56);
         enemy.character.setLocation(enemy.location.x, enemy.location.y);
         allChars.add(player);

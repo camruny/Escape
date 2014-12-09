@@ -104,7 +104,10 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         Object obj = e.getSource();
         if(obj == gameTimer)
         {
+            //gameBoard.player.checkCollision(gameBoard.key);
+            
             gameBoard.player.checkCollision(gameBoard.key);
+            //gameBoard.player.checkCollision(gameBoard.enemy);
             if(gameBoard.player.collisionOccurred){
                 gameBoard.player.keysLeft--;
                 keysRemaining.setText("Keys Remaining: " + gameBoard.player.keysLeft);
@@ -114,6 +117,14 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
                     gameBoard.gameWin();
                 }
             }
+            
+            gameBoard.player.checkCollision(gameBoard.enemy);
+            if(gameBoard.player.collisionOccurred){
+                System.out.println("Ahhh bowser");
+                gameBoard.player.collisionOccurred = false;
+            }
+            
+            
         }
         if(obj == start){
             gameBoard.player.keysLeft = 5;
