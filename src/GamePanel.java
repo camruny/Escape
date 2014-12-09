@@ -21,19 +21,19 @@ public class GamePanel extends JPanel{
     Level currentLevel;
     ArrayList<Character> allChars;
     Theme gameTheme;
-<<<<<<< Updated upstream
+
     Key key;
     //ImageIcon keyPic = new ImageIcon("images/key1.png");    
-=======
+
     ImageIcon keyPic = new ImageIcon("images/key1.png");
     ImageIcon doorOpenedImage = new ImageIcon("images/doors/door_opened.png");
     ImageIcon doorClosedImage = new ImageIcon("images/doors/door_closed.png");
     
     //Not in GamePanel
-    Key key;
+
     Key doorClosed;
     Key doorOpened;
->>>>>>> Stashed changes
+
     
     //adds the key image to the JButton
     //ImageIcon keyPic = new ImageIcon("images/key.png");
@@ -67,7 +67,7 @@ public class GamePanel extends JPanel{
         
         player = new Player(gameTheme.playerPic, new Point(50,50));
         enemy = new Enemy(5, gameTheme.enemyPic, new Point(150,150));
-        allChars = new ArrayList<Character>();
+        allChars = new ArrayList<>();
         //key = new Key(gameTheme.keyPic, new Point(50,50));
         player.character.setIcon(gameTheme.playerPic);
         enemy.character.setIcon(gameTheme.enemyPic);
@@ -78,7 +78,7 @@ public class GamePanel extends JPanel{
         player.character.setBorderPainted(false);
         player.character.setSize(40, 75);
         player.character.setLocation(player.location.x, player.location.y);
-<<<<<<< Updated upstream
+
         enemy.character.setLocation(enemy.location.x, enemy.location.y);
         allChars.add(player);
         allChars.add(enemy);
@@ -88,10 +88,10 @@ public class GamePanel extends JPanel{
     //Does Not Exist In Diagram
     public void addKey(){
         key = new Key(gameTheme.keyPic, new Point(50,50));
-=======
+
         
         //adds the first key
-        addKey();
+        addAKey();
         addDoorClosed();
         
     }
@@ -101,25 +101,25 @@ public class GamePanel extends JPanel{
     
     public void addDoorOpened()   {
         doorOpened = new Key(doorOpenedImage, new Point(50,50));
-        doorOpened.key.setIcon(doorOpenedImage);
-        doorOpened.key.setSize(50,99);
-        doorOpened.key.setLocation(300,0);
-        doorOpened.key.setBorderPainted(false);
-        add(doorOpened.key);
+        doorOpened.character.setIcon(doorOpenedImage);
+        doorOpened.character.setSize(50,99);
+        doorOpened.character.setLocation(300,0);
+        doorOpened.character.setBorderPainted(false);
+        add(doorOpened.character);
     }
     
     public void addDoorClosed()   {
         doorClosed = new Key(doorClosedImage, new Point(50,50));
-        doorClosed.key.setIcon(doorClosedImage);
-        doorClosed.key.setSize(50,99);
-        doorClosed.key.setLocation(300,0);
-        doorClosed.key.setBorderPainted(false);
-        add(doorClosed.key);
+        doorClosed.character.setIcon(doorClosedImage);
+        doorClosed.character.setSize(50,99);
+        doorClosed.character.setLocation(300,0);
+        doorClosed.character.setBorderPainted(false);
+        add(doorClosed.character);
     }
     
     //Does Not Exist In Diagram
-    public void addKey() {
->>>>>>> Stashed changes
+    public void addAKey() {
+
         //puts the key in a random position on the screen 
         Random rand = new Random();
         int randomNum1 = rand.nextInt((600-10)+ 1) + 10;   
