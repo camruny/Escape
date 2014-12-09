@@ -89,6 +89,10 @@ public class GamePanel extends JPanel{
         allChars.add(player);
         allChars.add(enemy);
         allChars.add(key);
+        
+        //adds the doors to the game panel
+        addDoorOpened();
+        addDoorClosed();
     }
     
     //Does Not Exist In Diagram
@@ -98,7 +102,6 @@ public class GamePanel extends JPanel{
         
         //adds the first key
         addAKey();
-        addDoorClosed();
         
     }
     
@@ -111,6 +114,7 @@ public class GamePanel extends JPanel{
         doorOpened.character.setSize(50,99);
         doorOpened.character.setLocation(300,0);
         doorOpened.character.setBorderPainted(false);
+        doorOpened.character.setVisible(false);
         add(doorOpened.character);
     }
     
@@ -120,6 +124,7 @@ public class GamePanel extends JPanel{
         doorClosed.character.setSize(50,99);
         doorClosed.character.setLocation(300,0);
         doorClosed.character.setBorderPainted(false);
+        doorClosed.character.setVisible(true);
         add(doorClosed.character);
     }
     
