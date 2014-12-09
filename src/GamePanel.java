@@ -79,6 +79,12 @@ public class GamePanel extends JPanel{
         player.character.setSize(40, 75);
         player.character.setLocation(player.location.x, player.location.y);
 
+        //enemy.character.setLocation(enemy.location.x, enemy.location.y);
+        enemy.character.setOpaque(false);
+        enemy.character.setContentAreaFilled(false);
+        //end Windows transparency
+        enemy.character.setBorderPainted(false);
+        enemy.character.setSize(70, 56);
         enemy.character.setLocation(enemy.location.x, enemy.location.y);
         allChars.add(player);
         allChars.add(enemy);

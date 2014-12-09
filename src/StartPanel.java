@@ -130,6 +130,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.key.character.setVisible(true);
             keysRemaining.setVisible(true);
             gameBoard.player.character.requestFocus();
+            gameBoard.repaint();
         }
         if(obj == characterLoop){
             gameBoard.changeCharacter();
