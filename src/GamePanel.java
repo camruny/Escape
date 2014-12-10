@@ -69,7 +69,7 @@ public class GamePanel extends JPanel{
         Random rand = new Random();
         int randomNum1 = rand.nextInt((600-10)+ 1) + 10;   
         int randomNum2 = rand.nextInt((400-10)+ 1) + 10;  
-        enemy = new Enemy(4, gameTheme.enemyPic, new Point(randomNum1, randomNum2));
+        enemy = new Enemy(3, gameTheme.enemyPic, new Point(randomNum1, randomNum2));
         currentLevel = new Level(1, 1, 1);
         allChars = new ArrayList<>();
         //key = new Key(gameTheme.keyPic, new Point(50,50));
@@ -82,6 +82,7 @@ public class GamePanel extends JPanel{
         player.character.setBorderPainted(false);
         player.character.setSize(40, 75);
         player.character.setLocation(player.location.x, player.location.y);
+
         //enemy.character.setLocation(enemy.location.x, enemy.location.y);
         enemy.character.setOpaque(false);
         enemy.character.setContentAreaFilled(false);
@@ -148,7 +149,8 @@ public class GamePanel extends JPanel{
         //puts the key in a random position on the screen 
         Random rand = new Random();
         int randomNum1 = rand.nextInt((600-10)+ 1) + 10;   
-        key.keyx = randomNum1;
+        key.keyx = randomNum1; 
+        
         int randomNum2 = rand.nextInt((400-10)+ 1) + 10;   
         key.keyy = randomNum2; 
         key.character.setIcon(key.graphic);
@@ -161,6 +163,7 @@ public class GamePanel extends JPanel{
         key.character.setLocation(key.keyx, key.keyy);
         add(key.character);
         key.character.setVisible(true);
+        System.out.println("Add key called.");
     }
     
     public void removeKey(){
@@ -174,22 +177,15 @@ public class GamePanel extends JPanel{
             currentLevel.name++;
             System.out.println("LEVEL "+ currentLevel.name + "!");
             player.character.setLocation(50,50);
-            Random rand = new Random();
-            int randomNum1 = rand.nextInt((600-10)+ 1) + 10;
-            int randomNum2 = rand.nextInt((400-10)+ 1) + 10; 
-            enemy.character.setLocation(randomNum1,randomNum2);
+            enemy.character.setLocation(150,50);
             player.location.x = 50;
             player.location.y = 50;
-            //enemy.location.x = 150;
-            //enemy.location.y = 50;
+            enemy.location.x = 150;
+            enemy.location.y = 50;
             if(currentLevel.name == 2){
                 currentLevel.numberOfKeys = 3;
-                enemy.speed = 5;
-             
             }else if(currentLevel.name == 3){
                 currentLevel.numberOfKeys = 5;
-                enemy.speed = 7;
-                
             }
             removeKey();
         }else if(currentLevel.name >= 3){
