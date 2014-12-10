@@ -21,10 +21,11 @@ public class Goal extends Character{
     }
 
     public void openDoor()  {
-        door.character.setIcon(new ImageIcon("images/doors/door_opened.png"));
+        this.character.setIcon(new ImageIcon("images/doors/door_opened.png"));
+        repaint();
     }
 
     public void closeDoor() {
-        door.character.setIcon(new ImageIcon("images/doors/door_closed.png"));
+        this.character.setIcon(new ImageIcon("images/doors/door_closed.png"));
     }
 }

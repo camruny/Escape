@@ -41,7 +41,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         theme2.addActionListener(this);
         theme3.addActionListener(this);
         start.addActionListener(this);
-        
+
         add(start);
         add(theme1);
         add(theme2);
@@ -117,15 +117,15 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             {
                 life.setForeground(Color.YELLOW);
             }
-            else if(life.getValue() < 33)
+            else if(life.getValue() < 33 && life.getValue()>0)
             {
                 life.setForeground(Color.RED);
             }
             else if(life.getValue()== 0)
             {
-                System.out.println("You lose!");
+                gameBoard.gameLose();
             }
-            
+
             gameBoard.enemy.move(gameBoard.player.location.x, gameBoard.player.location.y);
             gameBoard.enemy.character.setLocation(gameBoard.enemy.location.x,gameBoard.enemy.location.y);
             gameBoard.enemy.character.setIcon(gameBoard.enemy.graphic);
@@ -155,28 +155,46 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
                 gameBoard.currentLevel.numberOfKeys--;
                 gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
                 gameBoard.removeKey();
+                if(gameBoard.currentLevel.numberOfKeys > 0)
+                {
+                        gameBoard.addKey();
+                }
                 gameBoard.player.collisionOccurred = false;
                 if(gameBoard.currentLevel.numberOfKeys == 0){
                     //THIS NEEDS PLACED WITHIN COLLISION DETECTION SYSTEM FOR LOCATION OF DOOR. DOOR LOCATION IS x = 300, y = 0
                     //gameBoard.levelCompleted();
                     gameBoard.goal.openDoor();
+                    //gameBoard.goal.character.setIcon(new ImageIcon("images/doors/door_opened.png"));
+                    System.out.println("AHHHHHHHHHHHHHH");
+                }else
+                {
+                    gameBoard.goal.closeDoor();
                 }
             }
             
             gameBoard.player.checkCollision(gameBoard.enemy);
             if(gameBoard.player.collisionOccurred){
-                System.out.println("Ahhh bowser");
                 life.setValue(life.getValue() - 5);
+                gameBoard.player.collisionOccurred = false;
+            }
+            
+            gameBoard.player.checkCollision(gameBoard.goal);
+            if(gameBoard.player.collisionOccurred){
+                if(gameBoard.currentLevel.numberOfKeys == 0){
+                    //THIS NEEDS PLACED WITHIN COLLISION DETECTION SYSTEM FOR LOCATION OF DOOR. DOOR LOCATION IS x = 300, y = 0
+                    gameBoard.levelCompleted();
+                }
                 gameBoard.player.collisionOccurred = false;
             }
             
             
         }
         if(obj == start){
-            gameBoard.currentLevel.numberOfKeys = 1;
+            gameBoard.currentLevel.numberOfKeys = 3;
             gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
             gameBoard.add(gameBoard.player.character);
             gameBoard.add(gameBoard.enemy.character);
+            gameBoard.add(gameBoard.goal.character);
             gameBoard.addKey();
             start.setVisible(false);
             theme1.setVisible(false);
@@ -184,6 +202,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             theme3.setVisible(false);
             life.setVisible(true);
             life.setValue(100);
+            gameBoard.goal.character.setVisible(true);
             gameBoard.player.character.setVisible(true);
             gameBoard.enemy.character.setVisible(true);
             gameBoard.key.character.setVisible(true);
