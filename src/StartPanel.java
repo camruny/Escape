@@ -50,6 +50,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         add(gameBoard.keysRemaining);
         gameBoard.keysRemaining.setVisible(false);
         life.setVisible(false);
+        start.setVisible(false);
         repaint();
     }
     
@@ -227,6 +228,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             //gameBoard.player.keysLeft = 5;
             gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
+            start.setVisible(true);
             gameBoard.repaint();
         }
         if(obj == theme2){
@@ -242,6 +244,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             //gameBoard.player.keysLeft = 5;
             gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
+            start.setVisible(true);
             gameBoard.repaint();
         }
         if(obj == theme3){
@@ -257,6 +260,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             //gameBoard.player.keysLeft = 5;
             gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
+            start.setVisible(true);
             gameBoard.repaint();
         }
     }
