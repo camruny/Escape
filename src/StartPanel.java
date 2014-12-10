@@ -62,12 +62,19 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
          if(e.getKeyCode() == KeyEvent.VK_UP)    {
             gameTimer.start();
             characterLoop.start();
+            if(gameBoard.player.location.y > 5)
+            {
             gameBoard.player.location.y -= gameBoard.player.getSpeed();
+            }
             gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
          }
          if(e.getKeyCode() == KeyEvent.VK_DOWN)    {
             gameTimer.start();
             characterLoop.start();
+            if(gameBoard.player.location.y > gameBoard.getHeight()-80)
+            {
+            gameBoard.player.location.y -= gameBoard.player.getSpeed();
+            }
             gameBoard.player.location.y += gameBoard.player.getSpeed();
             gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
          }
@@ -138,15 +145,6 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             if(gameBoard.player.location.x > gameBoard.getWidth())
             {
                 gameBoard.player.location.x = 0;
-            }
-            
-            if(gameBoard.player.location.y < 0)
-            {
-                gameBoard.player.location.y = gameBoard.getHeight();
-            }
-            if(gameBoard.player.location.y > gameBoard.getHeight())
-            {
-                gameBoard.player.location.y = 0;
             }
             
             gameBoard.player.checkCollision(gameBoard.key);
