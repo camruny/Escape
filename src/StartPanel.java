@@ -129,7 +129,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.enemy.move(gameBoard.player.location.x, gameBoard.player.location.y);
             gameBoard.enemy.character.setLocation(gameBoard.enemy.location.x,gameBoard.enemy.location.y);
             gameBoard.enemy.character.setIcon(gameBoard.enemy.graphic);
-            life.setValue(life.getValue() + 1);
+            
             
             if(gameBoard.player.location.x < 0)
             {
@@ -170,6 +170,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
                 {
                     gameBoard.goal.closeDoor();
                 }
+                life.setValue(life.getValue() + 5);
             }
             
             gameBoard.player.checkCollision(gameBoard.enemy);
