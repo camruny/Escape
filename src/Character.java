@@ -11,7 +11,7 @@ public class Character extends JLabel{
     Point location;
     boolean collisionOccurred;
     int speed;
-    int DEFAULT_SPEED = 5;
+    int DEFAULT_SPEED = 10;
     int count = 0;
     
     public Character(ImageIcon g, Point i) {
