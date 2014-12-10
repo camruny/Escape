@@ -12,9 +12,13 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
 
 public class GamePanel extends JPanel{
     Player player;
@@ -25,6 +29,7 @@ public class GamePanel extends JPanel{
     Theme gameTheme;
     JLabel keysRemaining;
     Key key;
+    StartPanel startPanel;
     //ImageIcon keyPic = new ImageIcon("images/key1.png");    
 
     ImageIcon keyPic = new ImageIcon("images/key1.png");
@@ -57,7 +62,7 @@ public class GamePanel extends JPanel{
     ImageIcon mario1left = new ImageIcon("images/mario/mario1left.png");
     ImageIcon mario2left = new ImageIcon("images/mario/mario2left.png");
     ImageIcon mario3left = new ImageIcon("images/mario/mario3left.png");
-        
+            
     public GamePanel(Theme t)  {
         
         setLayout(null);
@@ -220,7 +225,8 @@ public class GamePanel extends JPanel{
     }
     
     public void gameLose(){
-        
+        startPanel.gameTimer.stop();
+        JOptionPane.showMessageDialog(null,"You Lose!");
     }
     
     public void checkAllCollisions(){
