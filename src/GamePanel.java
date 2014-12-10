@@ -76,12 +76,12 @@ public class GamePanel extends JPanel{
         Random rand = new Random();
         int randomNum1 = rand.nextInt((600-10)+ 1) + 10;   
         int randomNum2 = rand.nextInt((400-10)+ 1) + 10;  
-        enemy = new Enemy(7, gameTheme.enemyPic, new Point(randomNum1, randomNum2));
+        enemy = new Enemy(7, gameTheme.enemyPicLeft, new Point(randomNum1, randomNum2));
         currentLevel = new Level(1, 1, 1);
         goal = new Goal(gameTheme.doorClosedImage, new Point(300, 0));
         allChars = new ArrayList<>();
         player.character.setIcon(gameTheme.playerPic);
-        enemy.character.setIcon(gameTheme.enemyPic);
+        enemy.character.setIcon(gameTheme.enemyPicLeft);
         goal.character.setIcon(gameTheme.doorClosedImage);
         //Windows transparency here
         player.character.setOpaque(false);
@@ -96,7 +96,7 @@ public class GamePanel extends JPanel{
         enemy.character.setContentAreaFilled(false);
         //end Windows transparency
         enemy.character.setBorderPainted(false);
-        enemy.character.setSize(70, 56);
+        //enemy.character.setSize(70, 80);
         enemy.character.setLocation(enemy.location.x, enemy.location.y);
         
         goal.character.setOpaque(false);

@@ -10,16 +10,21 @@ public class Enemy extends Character{
         this.character.setIcon(g);
     }
     
-    public void move(int playerx, int playery){
+    public void move(int playerx, int playery, Theme t){
+        this.character.setVisible(true);
         if(this.location.x >= playerx)
         {
             this.location.x -= speed;
-            this.graphic = new ImageIcon("images/bowser/bowserLeft.png");
+            //this.graphic = new ImageIcon("images/bowser/bowserLeft.png");
+            this.character.setIcon(t.enemyPicLeft);
+            this.graphic = t.enemyPicLeft;
         }
         else
         {
             this.location.x += speed;
-            this.graphic = new ImageIcon("images/bowser/bowserRight.png");
+            //this.graphic = new ImageIcon("images/bowser/bowserRight.png");
+            //this.character.setIcon(t.enemyPicRight);
+            this.graphic = t.enemyPicRight;
         }
         if(this.location.y > playery)
         {

@@ -133,7 +133,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
                 gameBoard.gameLose();
             }
 
-            gameBoard.enemy.move(gameBoard.player.location.x, gameBoard.player.location.y);
+            gameBoard.enemy.move(gameBoard.player.location.x, gameBoard.player.location.y, chosenTheme);
             gameBoard.enemy.character.setLocation(gameBoard.enemy.location.x,gameBoard.enemy.location.y);
             gameBoard.enemy.character.setIcon(gameBoard.enemy.graphic);
             
@@ -203,7 +203,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             life.setValue(100);
             gameBoard.goal.character.setVisible(true);
             gameBoard.player.character.setVisible(true);
-            gameBoard.enemy.character.setVisible(true);
+            gameBoard.enemy.character.setVisible(false);
             gameBoard.key.character.setVisible(true);
             gameBoard.keysRemaining.setVisible(true);
             gameBoard.player.character.requestFocus();
@@ -218,7 +218,10 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         if(obj == theme1){
             gameBoard.mario1 = new ImageIcon("images/mario/mario1.png");
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
-            chosenTheme.enemyPic = new ImageIcon("images/bowser/bowserRight.png");
+            chosenTheme.enemyPicLeft = new ImageIcon("images/bowser/bowserLeft.png");
+            gameBoard.enemy.graphic = chosenTheme.enemyPicLeft;
+            gameBoard.enemy.character.setIcon(gameBoard.enemy.graphic);
+            gameBoard.enemy.character.setSize(70, 56);
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
@@ -228,7 +231,12 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         }
         if(obj == theme2){
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
-            chosenTheme.enemyPic = new ImageIcon("images/goomba/goomba_LF.png");
+            chosenTheme.enemyPicLeft = new ImageIcon("images/goomba/goomba_LF.png");
+            chosenTheme.enemyPicRight = new ImageIcon("images/goomba/goomba_RF.png");
+            gameBoard.enemy.graphic = chosenTheme.enemyPicLeft;
+            gameBoard.enemy.graphic = chosenTheme.enemyPicRight;
+            gameBoard.enemy.character.setIcon(gameBoard.enemy.graphic);
+            gameBoard.enemy.character.setSize(40, 40);
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-thanksgiving.png");
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-thanksgiving.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
@@ -238,8 +246,13 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         }
         if(obj == theme3){
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
-            chosenTheme.enemyPic = new ImageIcon("images/bowser/.png");
-            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/");
+            chosenTheme.enemyPicLeft = new ImageIcon("images/bowser/santa_bowser/bowserSantaLeft.png");
+            chosenTheme.enemyPicRight = new ImageIcon("images/bowser/santa_bowser/bowserSantaRight.png");
+            gameBoard.enemy.graphic = chosenTheme.enemyPicLeft;
+            gameBoard.enemy.graphic = chosenTheme.enemyPicRight;
+            gameBoard.enemy.character.setIcon(gameBoard.enemy.graphic);
+            gameBoard.enemy.character.setSize(70, 80);
+            chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-christmas.png");
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-christmas.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
             //gameBoard.player.keysLeft = 5;
