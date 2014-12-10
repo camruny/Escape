@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,12 +9,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.Timer;
 
 public class StartPanel extends JPanel implements ActionListener, KeyListener{
     JButton start, theme1, theme2, theme3;
     GamePanel gameBoard;
     Theme chosenTheme;
+    JProgressBar life;
     Timer characterLoop, characterLoopLeft, gameTimer;
     
     public StartPanel(){
@@ -24,7 +27,10 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         chosenTheme = new Theme(new ImageIcon("images/mario/mario1.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/halloween.png"));
         gameBoard = new GamePanel(chosenTheme);
         chosenTheme.backgroundPic = chosenTheme.backgroundIcon.getImage();
-
+        life = new JProgressBar(0,100);
+        life.setStringPainted(true);
+        life.setString("Health");
+        life.setForeground(Color.GREEN);
         characterLoop = new Timer(100, this);
         characterLoopLeft = new Timer(100,this);
         gameTimer = new Timer(100, this);
@@ -40,9 +46,10 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         add(theme1);
         add(theme2);
         add(theme3);
+        add(life);
         add(gameBoard.keysRemaining);
         gameBoard.keysRemaining.setVisible(false);
-        
+        life.setVisible(false);
         repaint();
     }
     
@@ -102,11 +109,28 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         Object obj = e.getSource();
         if(obj == gameTimer)
         {
+            if(life.getValue() >= 66)
+            {
+                life.setForeground(Color.GREEN);
+            }
+            else if(life.getValue() < 66 && life.getValue() > 33)
+            {
+                life.setForeground(Color.YELLOW);
+            }
+            else if(life.getValue() < 33)
+            {
+                life.setForeground(Color.RED);
+            }
+            else if(life.getValue()== 0)
+            {
+                System.out.println("You lose!");
+            }
             
             gameBoard.enemy.move(gameBoard.player.location.x, gameBoard.player.location.y);
             gameBoard.enemy.character.setLocation(gameBoard.enemy.location.x,gameBoard.enemy.location.y);
             gameBoard.enemy.character.setIcon(gameBoard.enemy.graphic);
-                
+            life.setValue(life.getValue() + 1);
+            
             if(gameBoard.player.location.x < 0)
             {
                 gameBoard.player.location.x = gameBoard.getWidth();
@@ -142,7 +166,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.player.checkCollision(gameBoard.enemy);
             if(gameBoard.player.collisionOccurred){
                 System.out.println("Ahhh bowser");
-               
+                life.setValue(life.getValue() - 5);
                 gameBoard.player.collisionOccurred = false;
             }
             
@@ -158,6 +182,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             theme1.setVisible(false);
             theme2.setVisible(false);
             theme3.setVisible(false);
+            life.setVisible(true);
+            life.setValue(100);
             gameBoard.player.character.setVisible(true);
             gameBoard.enemy.character.setVisible(true);
             gameBoard.key.character.setVisible(true);
