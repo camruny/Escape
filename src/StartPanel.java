@@ -255,6 +255,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
             chosenTheme.enemyPicLeft = new ImageIcon("images/goomba/goomba_LF.png");
             chosenTheme.enemyPicRight = new ImageIcon("images/goomba/goomba_RF.png");
+            gameBoard.player.character.setSize(40, 75);
             gameBoard.enemy.graphic = chosenTheme.enemyPicLeft;
             gameBoard.enemy.graphic = chosenTheme.enemyPicRight;
             gameBoard.enemy.character.setIcon(gameBoard.enemy.graphic);
