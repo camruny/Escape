@@ -221,12 +221,14 @@ public class GamePanel extends JPanel{
     public void gameWin(){
         System.out.println("You Win!");
         goal.closeDoor();
+        this.setVisible(false);
+        startPanel.life.setVisible(false);
         
     }
     
     public void gameLose(){
-        startPanel.gameTimer.stop();
-        JOptionPane.showMessageDialog(null,"You Lose!");
+       //this.setVisible(false);
+       this.removeAll();
     }
     
     public void checkAllCollisions(){

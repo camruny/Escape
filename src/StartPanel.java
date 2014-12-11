@@ -14,10 +14,11 @@ import javax.swing.JProgressBar;
 import javax.swing.Timer;
 
 public class StartPanel extends JPanel implements ActionListener, KeyListener{
-    JButton start, theme1, theme2, theme3;
+    JButton start, theme1, theme2, theme3, restart, close;
     GamePanel gameBoard;
     Theme chosenTheme;
     JProgressBar life;
+    GameFrame gf;
     Timer characterLoop, characterLoopLeft, gameTimer;
     
     public StartPanel(){
@@ -25,6 +26,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         theme1 = new JButton("Halloween Theme");
         theme2 = new JButton("Thanksgiving Theme");
         theme3 = new JButton("Christmas Theme");
+        restart = new JButton("Restart");
+        close = new JButton("Close");
         chosenTheme = new Theme(new ImageIcon("images/mario/mario1.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/halloween.png"));
         gameBoard = new GamePanel(chosenTheme);
         chosenTheme.backgroundPic = chosenTheme.backgroundIcon.getImage();
@@ -42,16 +45,22 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         theme2.addActionListener(this);
         theme3.addActionListener(this);
         start.addActionListener(this);
+        close.addActionListener(this);
+        restart.addActionListener(this);
 
         add(start);
         add(theme1);
         add(theme2);
         add(theme3);
         add(life);
+        add(restart);
+        add(close);
         add(gameBoard.keysRemaining);
         gameBoard.keysRemaining.setVisible(false);
         life.setVisible(false);
         start.setVisible(false);
+        close.setVisible(false);
+        restart.setVisible(false);
         repaint();
     }
     
@@ -132,7 +141,12 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             }
             else if(life.getValue()== 0)
             {
+                life.setVisible(false);
+                restart.setVisible(true);
+                close.setVisible(true);
+                gameBoard.keysRemaining.setVisible(false);
                 gameBoard.gameLose();
+                
             }
 
             gameBoard.enemy.move(gameBoard.player.location.x, gameBoard.player.location.y, chosenTheme);
@@ -214,6 +228,13 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         if(obj == characterLoopLeft){
             gameBoard.changeCharacterLeft();
         }
+        if(obj == restart){
+            Main.main(null);
+        }
+        if(obj == close){
+            System.exit(0);
+        }
+        
         if(obj == theme1){
             gameBoard.mario1 = new ImageIcon("images/mario/mario1.png");
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
