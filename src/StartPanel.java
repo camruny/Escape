@@ -1,6 +1,7 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -160,8 +161,6 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
                 }
                 gameBoard.player.collisionOccurred = false;
                 if(gameBoard.currentLevel.numberOfKeys == 0){
-                    //THIS NEEDS PLACED WITHIN COLLISION DETECTION SYSTEM FOR LOCATION OF DOOR. DOOR LOCATION IS x = 300, y = 0
-                    //gameBoard.levelCompleted();
                     gameBoard.goal.openDoor();
                     //gameBoard.goal.character.setIcon(new ImageIcon("images/doors/door_opened.png"));
                     System.out.println("AHHHHHHHHHHHHHH");
@@ -181,7 +180,6 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.player.checkCollision(gameBoard.goal);
             if(gameBoard.player.collisionOccurred){
                 if(gameBoard.currentLevel.numberOfKeys == 0){
-                    //THIS NEEDS PLACED WITHIN COLLISION DETECTION SYSTEM FOR LOCATION OF DOOR. DOOR LOCATION IS x = 300, y = 0
                     gameBoard.levelCompleted();
                 }
                 gameBoard.player.collisionOccurred = false;
@@ -220,6 +218,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.mario1 = new ImageIcon("images/mario/mario1.png");
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
             chosenTheme.enemyPicLeft = new ImageIcon("images/bowser/bowserLeft.png");
+            gameBoard.player.character.setSize(40, 75);
             gameBoard.enemy.graphic = chosenTheme.enemyPicLeft;
             gameBoard.enemy.character.setIcon(gameBoard.enemy.graphic);
             gameBoard.enemy.character.setSize(70, 56);
@@ -248,9 +247,19 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.repaint();
         }
         if(obj == theme3){
-            chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
+            
+            chosenTheme.playerPic = new ImageIcon("images/mario/santa_mario/santaMario1right.png");
             chosenTheme.enemyPicLeft = new ImageIcon("images/bowser/santa_bowser/bowserSantaLeft.png");
             chosenTheme.enemyPicRight = new ImageIcon("images/bowser/santa_bowser/bowserSantaRight.png");
+            gameBoard.mario1 = new ImageIcon("images/mario/santa_mario/santaMario1right.png");
+            gameBoard.mario2 = new ImageIcon("images/mario/santa_mario/santaMario2right.png");
+            gameBoard.mario3 = new ImageIcon("images/mario/santa_mario/santaMario3right.png");
+            gameBoard.mario1left = new ImageIcon("images/mario/santa_mario/santaMario1left.png");
+            gameBoard.mario2left = new ImageIcon("images/mario/santa_mario/santaMario2left.png");
+            gameBoard.mario3left = new ImageIcon("images/mario/santa_mario/santaMario3left.png");
+            gameBoard.player.graphic = chosenTheme.playerPic;
+            gameBoard.player.character.setIcon(gameBoard.player.graphic);
+            gameBoard.player.character.setSize(40, 90);
             gameBoard.enemy.graphic = chosenTheme.enemyPicLeft;
             gameBoard.enemy.graphic = chosenTheme.enemyPicRight;
             gameBoard.enemy.character.setIcon(gameBoard.enemy.graphic);
