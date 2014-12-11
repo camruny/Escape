@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 /**
  *
- * @author Cameron
+ * @author Group 08
  */
 public class Main {
 
@@ -15,5 +16,5 @@ public class Main {
     public static void main(String[] args) {
         GameFrame gameFrame = new GameFrame();
     }
-    
+
 }

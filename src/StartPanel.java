@@ -13,15 +13,16 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
 
-public class StartPanel extends JPanel implements ActionListener, KeyListener{
+public class StartPanel extends JPanel implements ActionListener, KeyListener {
+
     JButton start, theme1, theme2, theme3, restart, close;
     GamePanel gameBoard;
     Theme chosenTheme;
     JProgressBar life;
     GameFrame gf;
     Timer characterLoop, characterLoopLeft, gameTimer;
-    
-    public StartPanel(){
+
+    public StartPanel() {
         start = new JButton("Start");
         theme1 = new JButton("Halloween Theme");
         theme2 = new JButton("Thanksgiving Theme");
@@ -31,14 +32,14 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         chosenTheme = new Theme(new ImageIcon("images/mario/mario1.png"), new ImageIcon("images/bowser/bowser.png"), new ImageIcon("images/backgrounds/halloween.png"));
         gameBoard = new GamePanel(chosenTheme);
         chosenTheme.backgroundPic = chosenTheme.backgroundIcon.getImage();
-        life = new JProgressBar(0,100);
+        life = new JProgressBar(0, 100);
         life.setStringPainted(true);
         life.setString("Health");
         life.setForeground(Color.GREEN);
         characterLoop = new Timer(100, this);
-        characterLoopLeft = new Timer(100,this);
+        characterLoopLeft = new Timer(100, this);
         gameTimer = new Timer(100, this);
-        
+
         gameBoard.player.character.addKeyListener(this);
         gameBoard.player.character.setFocusable(true);
         theme1.addActionListener(this);
@@ -63,154 +64,134 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
         restart.setVisible(false);
         repaint();
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e) {
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-         if(e.getKeyCode() == KeyEvent.VK_UP)    {
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
             gameTimer.start();
             characterLoop.start();
-            if(gameBoard.player.location.y > 5)
-            {
-            gameBoard.player.location.y -= gameBoard.player.getSpeed();
+            if (gameBoard.player.location.y > 5) {
+                gameBoard.player.location.y -= gameBoard.player.getSpeed();
             }
             gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
-         }
-         if(e.getKeyCode() == KeyEvent.VK_DOWN)    {
+        }
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             gameTimer.start();
             characterLoop.start();
-            if(gameBoard.player.location.y > gameBoard.getHeight()-80)
-            {
-            gameBoard.player.location.y -= gameBoard.player.getSpeed();
+            if (gameBoard.player.location.y > gameBoard.getHeight() - 80) {
+                gameBoard.player.location.y -= gameBoard.player.getSpeed();
             }
             gameBoard.player.location.y += gameBoard.player.getSpeed();
             gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
-         }
-         if(e.getKeyCode() == KeyEvent.VK_LEFT)    {
+        }
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             gameTimer.start();
             characterLoopLeft.start();
             gameBoard.player.location.x -= gameBoard.player.getSpeed();
             gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
-         }
-         if(e.getKeyCode() == KeyEvent.VK_RIGHT)    {
+        }
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             gameTimer.start();
             characterLoop.start();
             gameBoard.player.location.x += gameBoard.player.getSpeed();
             gameBoard.player.character.setLocation(gameBoard.player.location.x, gameBoard.player.location.y);
-         }
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_UP)    {
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
             characterLoop.stop();
-            //gameTimer.stop();
-         }
-        if(e.getKeyCode() == KeyEvent.VK_DOWN)    {
+        }
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             characterLoop.stop();
-            //gameTimer.stop();
-         }
-        if(e.getKeyCode() == KeyEvent.VK_LEFT)    {
+        }
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             characterLoopLeft.stop();
-            //gameTimer.stop();
-         }
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT)    {
+        }
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             characterLoop.stop();
-            //gameTimer.stop();
-         }
+        }
     }
-    
+
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
-        if(obj == gameTimer)
-        {
-            if(life.getValue() >= 66)
-            {
+        if (obj == gameTimer) {
+            if (life.getValue() >= 66) {
                 life.setForeground(Color.GREEN);
-            }
-            else if(life.getValue() < 66 && life.getValue() > 33)
-            {
+            } else if (life.getValue() < 66 && life.getValue() > 33) {
                 life.setForeground(Color.YELLOW);
-            }
-            else if(life.getValue() < 33 && life.getValue()>0)
-            {
+            } else if (life.getValue() < 33 && life.getValue() > 0) {
                 life.setForeground(Color.RED);
-            }
-            else if(life.getValue()== 0)
-            {
+            } else if (life.getValue() == 0) {
                 life.setVisible(false);
                 restart.setVisible(true);
                 close.setVisible(true);
                 gameBoard.keysRemaining.setVisible(false);
+                gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/gameOver.png");
+                gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
                 gameBoard.gameLose();
-                
+
             }
 
             gameBoard.enemy.move(gameBoard.player.location.x, gameBoard.player.location.y, chosenTheme);
-            gameBoard.enemy.character.setLocation(gameBoard.enemy.location.x,gameBoard.enemy.location.y);
+            gameBoard.enemy.character.setLocation(gameBoard.enemy.location.x, gameBoard.enemy.location.y);
             gameBoard.enemy.character.setIcon(gameBoard.enemy.graphic);
-            
-            
-            if(gameBoard.player.location.x < 0)
-            {
+
+            if (gameBoard.player.location.x < 0) {
                 gameBoard.player.location.x = gameBoard.getWidth();
             }
-            if(gameBoard.player.location.x > gameBoard.getWidth())
-            {
+            if (gameBoard.player.location.x > gameBoard.getWidth()) {
                 gameBoard.player.location.x = 0;
             }
-            
+
             gameBoard.player.checkCollision(gameBoard.key);
-            //gameBoard.player.checkCollision(gameBoard.enemy);
-            if(gameBoard.player.collisionOccurred){
+            if (gameBoard.player.collisionOccurred) {
                 gameBoard.currentLevel.numberOfKeys--;
                 gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
                 gameBoard.removeKey();
-                if(gameBoard.currentLevel.numberOfKeys > 0)
-                {
-                        gameBoard.addKey();
+                if (gameBoard.currentLevel.numberOfKeys > 0) {
+                    gameBoard.addKey();
                 }
                 gameBoard.player.collisionOccurred = false;
-                if(gameBoard.currentLevel.numberOfKeys == 0){
+                if (gameBoard.currentLevel.numberOfKeys == 0) {
                     gameBoard.goal.openDoor();
-                    //gameBoard.goal.character.setIcon(new ImageIcon("images/doors/door_opened.png"));
-                }else
-                {
+                } else {
                     gameBoard.goal.closeDoor();
                 }
                 life.setValue(life.getValue() + 5);
             }
-            
+
             gameBoard.player.checkCollision(gameBoard.enemy);
-            if(gameBoard.player.collisionOccurred){
-                life.setValue(life.getValue() - 5);
+            if (gameBoard.player.collisionOccurred) {
+                life.setValue(life.getValue() - 8);
                 gameBoard.player.collisionOccurred = false;
             }
-            
+
             gameBoard.player.checkCollision(gameBoard.goal);
-            if(gameBoard.player.collisionOccurred){
-                if(gameBoard.currentLevel.numberOfKeys == 0){
+            if (gameBoard.player.collisionOccurred) {
+                if (gameBoard.currentLevel.numberOfKeys == 0) {
                     gameBoard.levelCompleted();
-                    System.out.println(gameBoard.currentLevel.name);
-                    if(gameBoard.currentLevel.name == 4)
-                    {
-                        
+                    if (gameBoard.currentLevel.name == 4) {
+
                         life.setVisible(false);
                         restart.setVisible(true);
                         close.setVisible(true);
                         gameBoard.keysRemaining.setVisible(false);
-                        gameBoard.gameWin();  
+                        gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/gameWin.png");
+                        gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
+                        gameBoard.gameWin();
                     }
                 }
                 gameBoard.player.collisionOccurred = false;
             }
-            
-            
+
         }
-        if(obj == start){
+        if (obj == start) {
             gameBoard.currentLevel.numberOfKeys = 3;
             gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
             gameBoard.add(gameBoard.player.character);
@@ -231,20 +212,20 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             gameBoard.player.character.requestFocus();
             gameBoard.repaint();
         }
-        if(obj == characterLoop){
+        if (obj == characterLoop) {
             gameBoard.changeCharacter();
         }
-        if(obj == characterLoopLeft){
+        if (obj == characterLoopLeft) {
             gameBoard.changeCharacterLeft();
         }
-        if(obj == restart){
+        if (obj == restart) {
             Main.main(null);
         }
-        if(obj == close){
+        if (obj == close) {
             System.exit(0);
         }
-        
-        if(obj == theme1){
+
+        if (obj == theme1) {
             gameBoard.mario1 = new ImageIcon("images/mario/mario1.png");
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
             chosenTheme.enemyPicLeft = new ImageIcon("images/bowser/bowserLeft.png");
@@ -255,12 +236,11 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
-            //gameBoard.player.keysLeft = 5;
             gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
             start.setVisible(true);
             gameBoard.repaint();
         }
-        if(obj == theme2){
+        if (obj == theme2) {
             chosenTheme.playerPic = new ImageIcon("images/mario/mario1.png");
             chosenTheme.enemyPicLeft = new ImageIcon("images/goomba/goomba_LF.png");
             chosenTheme.enemyPicRight = new ImageIcon("images/goomba/goomba_RF.png");
@@ -272,13 +252,12 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-thanksgiving.png");
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-thanksgiving.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
-            //gameBoard.player.keysLeft = 5;
             gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
             start.setVisible(true);
             gameBoard.repaint();
         }
-        if(obj == theme3){
-            
+        if (obj == theme3) {
+
             chosenTheme.playerPic = new ImageIcon("images/mario/santa_mario/santaMario1right.png");
             chosenTheme.enemyPicLeft = new ImageIcon("images/bowser/santa_bowser/bowserSantaLeft.png");
             chosenTheme.enemyPicRight = new ImageIcon("images/bowser/santa_bowser/bowserSantaRight.png");
@@ -298,7 +277,6 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             chosenTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-christmas.png");
             gameBoard.gameTheme.backgroundIcon = new ImageIcon("images/backgrounds/bg-christmas.png");
             gameBoard.gameTheme.backgroundPic = gameBoard.gameTheme.backgroundIcon.getImage();
-            //gameBoard.player.keysLeft = 5;
             gameBoard.keysRemaining.setText("Keys Remaining: " + gameBoard.currentLevel.numberOfKeys);
             start.setVisible(true);
             gameBoard.repaint();
