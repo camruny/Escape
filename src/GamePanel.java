@@ -72,7 +72,7 @@ public class GamePanel extends JPanel{
         
         gameTheme = t;
         keysRemaining = new JLabel("Keys Remaining: ");
-        player = new Player(gameTheme.playerPic, new Point(50,50));
+        player = new Player(gameTheme.playerPic, new Point(300,300));
         Random rand = new Random();
         int randomNum1 = rand.nextInt((600-10)+ 1) + 10;   
         int randomNum2 = rand.nextInt((400-10)+ 1) + 10;  
@@ -166,10 +166,10 @@ public class GamePanel extends JPanel{
 
         //puts the key in a random position on the screen 
         Random rand = new Random();
-        int randomNum1 = rand.nextInt((600-10)+ 1) + 10;   
+        int randomNum1 = rand.nextInt((550)+ 1) + 10; 
         key.keyx = randomNum1; 
         
-        int randomNum2 = rand.nextInt((400-10)+ 1) + 10;   
+        int randomNum2 = rand.nextInt((350-10)+ 1) + 10;   
         key.keyy = randomNum2; 
         key.character.setIcon(key.graphic);
         key.character.setSize(20, 42);
@@ -181,7 +181,6 @@ public class GamePanel extends JPanel{
         key.character.setLocation(key.keyx, key.keyy);
         add(key.character);
         key.character.setVisible(true);
-        System.out.println("Add key called.");
     }
     
     public void removeKey(){
@@ -191,14 +190,13 @@ public class GamePanel extends JPanel{
     }
     
     public void levelCompleted(){
-        if(currentLevel.name < 3){
+        if(currentLevel.name < 4){
             currentLevel.name++;
             goal.closeDoor();
-            System.out.println("LEVEL "+ currentLevel.name + "!");
-            player.character.setLocation(50,50);
+            player.character.setLocation(300,300);
             enemy.character.setLocation(500,50);
-            player.location.x = 50;
-            player.location.y = 50;
+            player.location.x = 300;
+            player.location.y = 300;
             enemy.location.x = 500;
             enemy.location.y = 50;
             if(currentLevel.name == 2){
@@ -213,17 +211,12 @@ public class GamePanel extends JPanel{
             keysRemaining.setText("Keys Remaining: " + currentLevel.numberOfKeys);
             removeKey();
             addKey();
-        }else if(currentLevel.name >= 3){
-            gameWin();
         }
     }
     
     public void gameWin(){
-        System.out.println("You Win!");
         goal.closeDoor();
-        this.setVisible(false);
-        startPanel.life.setVisible(false);
-        
+        this.removeAll();
     }
     
     public void gameLose(){

@@ -177,7 +177,6 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
                 if(gameBoard.currentLevel.numberOfKeys == 0){
                     gameBoard.goal.openDoor();
                     //gameBoard.goal.character.setIcon(new ImageIcon("images/doors/door_opened.png"));
-                    System.out.println("AHHHHHHHHHHHHHH");
                 }else
                 {
                     gameBoard.goal.closeDoor();
@@ -195,6 +194,16 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener{
             if(gameBoard.player.collisionOccurred){
                 if(gameBoard.currentLevel.numberOfKeys == 0){
                     gameBoard.levelCompleted();
+                    System.out.println(gameBoard.currentLevel.name);
+                    if(gameBoard.currentLevel.name == 4)
+                    {
+                        
+                        life.setVisible(false);
+                        restart.setVisible(true);
+                        close.setVisible(true);
+                        gameBoard.keysRemaining.setVisible(false);
+                        gameBoard.gameWin();  
+                    }
                 }
                 gameBoard.player.collisionOccurred = false;
             }

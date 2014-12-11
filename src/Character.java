@@ -12,7 +12,6 @@ public class Character extends JLabel{
     boolean collisionOccurred;
     int speed;
     int DEFAULT_SPEED = 15;
-    int count = 0;
     
     public Character(ImageIcon g, Point i) {
         character = new JButton();
@@ -29,9 +28,7 @@ public class Character extends JLabel{
             this.location.y < char2.character.getLocation().y + char2.character.getHeight() &&
             this.character.getHeight() + this.location.y > char2.character.getLocation().y)
             {
-            System.out.println("Collision! " + count);
             collisionOccurred = true;
-            count++;
             }
     }
     
