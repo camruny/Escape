@@ -13,7 +13,7 @@ public class Theme {
         enemyPicLeft = new ImageIcon("images/bowser/bowserLeft.png");
         enemyPicRight = new ImageIcon("images/bowser/bowserRight.png");
         keyPic = new ImageIcon("images/key1.png");
-        backgroundIcon = new ImageIcon("images/backgrounds/halloween.png");
+        backgroundIcon = new ImageIcon("images/backgrounds/splashScreen.png");
         doorOpenedImage = new ImageIcon("images/doors/door_opened.png");
         doorClosedImage = new ImageIcon("images/doors/door_closed.png");
         gameBoard = new GamePanel(this);

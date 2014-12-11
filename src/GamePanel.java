@@ -52,7 +52,7 @@ public class GamePanel extends JPanel {
         Random rand = new Random();
         int randomNum1 = rand.nextInt((600 - 10) + 1) + 10;
         int randomNum2 = rand.nextInt((400 - 10) + 1) + 10;
-        enemy = new Enemy(10, gameTheme.enemyPicLeft, new Point(randomNum1, randomNum2));
+        enemy = new Enemy(12, gameTheme.enemyPicLeft, new Point(randomNum1, randomNum2));
         currentLevel = new Level(1, 1, 1);
         goal = new Goal(gameTheme.doorClosedImage, new Point(300, 0));
         allChars = new ArrayList<>();
@@ -121,11 +121,11 @@ public class GamePanel extends JPanel {
             if (currentLevel.name == 2) {
                 keysRemaining.setText("Keys Remaining: " + currentLevel.numberOfKeys);
                 currentLevel.numberOfKeys = 4;
-                enemy.speed = 12;
+                enemy.speed = 14;
             } else if (currentLevel.name == 3) {
                 keysRemaining.setText("Keys Remaining: " + currentLevel.numberOfKeys);
                 currentLevel.numberOfKeys = 5;
-                enemy.speed = 15;
+                enemy.speed = 16;
             }
             keysRemaining.setText("Keys Remaining: " + currentLevel.numberOfKeys);
             removeKey();
