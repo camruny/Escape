@@ -163,7 +163,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
                 } else {
                     gameBoard.goal.closeDoor();
                 }
-                life.setValue(life.getValue() + 5);
+                life.setValue(life.getValue() + 10);
             }
 
             gameBoard.player.checkCollision(gameBoard.enemy);
